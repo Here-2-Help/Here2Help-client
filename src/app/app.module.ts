@@ -22,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // v-- ROUTES --v
 const routes: Routes = [
-  {path: '', component: LandingComponent},
+  {path: '',            component: LandingComponent},
+  {path: 'signup',     component: SignupComponent}
 ]
 
 @NgModule({
