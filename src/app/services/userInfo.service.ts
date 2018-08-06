@@ -18,10 +18,16 @@ export class UserInfoService {
      return Observable.throw(e.json().message);
   }
 
-
   signup(newUser) {
     return this.http.post('http://localhost:3000/api/users/signup', newUser, {withCredentials: true})
     .map(res => res.json())
     // .catch(this.handleError);
+  }
+
+  getOneUser(userID) {
+    return this.http.get(`http://localhost:3000/api/users/${userID}`)
+      .map((userDetails)=>{
+        return userDetails.json()
+      });
   }
 }
