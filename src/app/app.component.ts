@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserInfoService } from './services/userInfo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private userInfo: UserInfoService, private router: Router) {}
 
   isCollapsed:Boolean = true;
 
   title = 'app';
+
+  logout() {
+    this.userInfo.logout()
+    .subscribe((res) => {console.log(res); this.router.navigate(['/'])});
+  }
 }
 
 // I'M HIDING ALL THIS HTML HERE IN CASE WE WANT TO GO BACK TO THE NORMAL BOOTSTRAP NAVBAR INSTEAD OF THE

@@ -28,4 +28,16 @@ export class TestFormComponent implements OnInit {
     }
   }
 
+  login(loginForm) {
+    this.userInfo.login(loginForm.value)
+    .subscribe(
+      user => {this.router.navigate(['/'])},
+      error => {this.errorMessage = error.json().message}
+    )
+  }
+
+  logout() {
+    
+  }
+
 }
