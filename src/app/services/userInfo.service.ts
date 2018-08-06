@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http,Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable }           from '@angular/core';
+import { Http,Response }        from '@angular/http';
+import { Observable }           from 'rxjs/Observable';
+import { FormsModule}           from '@angular/forms';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
-import { FormsModule} from '@angular/forms';
-
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +40,14 @@ export class UserInfoService {
       .map((userDetails)=>{
         return userDetails.json()
       });
+  }
+
+  isLoggedIn() {
+    return this.http.get(`http://localhost:3000/api/user/loggedin`, {withCredentials: true})
+      .map((res) => {
+        return JSON.parse(res._body)
+      })
+      .catch(this.handleError);
   }
     
 // COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
