@@ -20,17 +20,20 @@ import { OrgInfoService } from './services/orgInfo.service'
 import { FormsModule } from '../../node_modules/@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TestFormComponent } from './test-form/test-form.component';
 
 // v-- ROUTES --v
 const routes: Routes = [
   {path: '', component: LandingComponent},
+  {path: 'test', component: TestFormComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LandingComponent
+    LandingComponent,
+    TestFormComponent
   ],
   imports: [
     BrowserModule,
