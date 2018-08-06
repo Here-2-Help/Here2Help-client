@@ -15,22 +15,26 @@ import { LandingComponent }         from './landing/landing.component'
 import { SignupComponent }          from './signup/signup.component';
 
 // v-- SERVICES IMPORTS --v
-import { UserinfoService } from './services/userinfo.service';
+import { UserInfoService } from './services/userInfo.service';
+import { OrgInfoService } from './services/orgInfo.service'
 import { FormsModule } from '../../node_modules/@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TestFormComponent } from './test-form/test-form.component';
 
 // v-- ROUTES --v
 const routes: Routes = [
   {path: '',            component: LandingComponent},
-  {path: 'signup',     component: SignupComponent}
+  {path: 'signup',     component: SignupComponent},
+  {path: 'test', component: TestFormComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LandingComponent
+    LandingComponent,
+    TestFormComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
-  providers: [UserinfoService],
+  providers: [UserInfoService, OrgInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
