@@ -24,7 +24,8 @@ import { TestFormComponent } from './test-form/test-form.component';
 
 // v-- ROUTES --v
 const routes: Routes = [
-  {path: '', component: LandingComponent},
+  {path: '',            component: LandingComponent},
+  {path: 'signup',     component: SignupComponent},
   {path: 'test', component: TestFormComponent}
 ]
 
