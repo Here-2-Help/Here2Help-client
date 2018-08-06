@@ -4,6 +4,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { UserInfoService } from '../services/userInfo.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,17 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localUserInfo: UserInfoService) { };
+
+  newlyCreatedUser:any = {};
+
+  signup(formInfo) {
+    console.log(formInfo.value);
+    this.localUserInfo.signup(formInfo.value)
+      .subscribe((theNewUser)=>{
+        router.navigate()
+      })
+  };
 
   ngOnInit() {
   }
