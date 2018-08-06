@@ -1,4 +1,5 @@
-<div class="container">
+<!-- Signup -->
+<!-- <div class="container">
   <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
     <label for="email">Email:</label> <br>
     <input [(ngModel)]="email" type="text" name="email"> <br>
@@ -17,4 +18,17 @@
     <button>Submit</button>
   </form>
 </div>
-  <p><b>{{errorMessage}}</b></p>
+<p><b>{{errorMessage}}</b></p> -->
+
+
+<!-- Login -->
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <label for="email">Email:</label> <br>
+    <input [(ngModel)]="email" type="text" name="email" required> <br>
+    <label for="password">Enter Password:</label> <br>
+    <input [(ngModel)]="password" type="password" name="password" required> <br>
+    <button>Submit</button>
+</form>
+</div>
+<p><b>{{errorMessage}}</b></p>

@@ -10,7 +10,9 @@ import { FormsModule} from '@angular/forms';
   providedIn: 'root'
 })
 export class UserInfoService {
-  
+
+  currentUser: any;
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -24,10 +26,21 @@ export class UserInfoService {
     // .catch(this.handleError);
   }
 
+  logout() {
+    return this.http.post('http://localhost:3000/api/users/logout', {})
+    .map(res => {res.json()})
+
   getOneUser(userID) {
     return this.http.get(`http://localhost:3000/api/users/${userID}`)
       .map((userDetails)=>{
         return userDetails.json()
       });
+    
+// COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
+//    signup(newUser){
+//        return this.http.post('http://localhost:3000/api/users/signup', newUser)
+//        .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()});
+//    }
+    
   }
 }

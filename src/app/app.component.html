@@ -38,9 +38,9 @@
                     </a>
                     <!-- ---------------------------------------------------------------------------------- -->
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="test">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="test">Login / Signup</a>
                         <a class="dropdown-item" href="#">Something else here</a>
+                        <span *ngIf="this.userInfo.currentUser"> <a class="dropdown-item" (click)="logout()" href="">Logout</a> </span>
                     </div>
                     <!-- ---------------------------------------------------------------------------------- -->
                 </li>
