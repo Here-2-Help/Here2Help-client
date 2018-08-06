@@ -17,6 +17,8 @@ import { SignupComponent }          from './signup/signup.component';
 import { UserinfoService } from './services/userinfo.service';
 import { FormsModule } from '../../node_modules/@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // v-- ROUTES --v
 const routes: Routes = [
   {path: '', component: SignupComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgbModule.forRoot()
   ],
   providers: [UserinfoService],
   bootstrap: [AppComponent]

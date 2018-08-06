@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
