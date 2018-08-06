@@ -15,7 +15,8 @@ import { LandingComponent }         from './landing/landing.component'
 import { SignupComponent }          from './signup/signup.component';
 
 // v-- SERVICES IMPORTS --v
-import { UserinfoService } from './services/userinfo.service';
+import { UserInfoService } from './services/userInfo.service';
+import { OrgInfoService } from './services/orgInfo.service'
 import { FormsModule } from '../../node_modules/@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -40,7 +41,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
-  providers: [UserinfoService],
+  providers: [UserInfoService, OrgInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
