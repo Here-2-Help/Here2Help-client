@@ -15,10 +15,13 @@ export class UserdetailsComponent implements OnInit {
   userDetails:any = {};
 
   ngOnInit() {
+    console.log('-----------------ActivatedRoute.params:',this.userProfileRouter.params)
     this.userProfileRouter.params
       .subscribe((params)=>{
+        console.log("******************** params[''id]:",params['id']);
         this.localUserInfo.getOneUser(params['id'])
           .subscribe((returnedUserDetails)=>{
+            console.log(returnedUserDetails);
             this.userDetails = returnedUserDetails;
           })
       })

@@ -29,12 +29,19 @@ export class UserInfoService {
   logout() {
     return this.http.post('http://localhost:3000/api/users/logout', {})
     .map(res => {res.json()})
+  }
+
+  login(user) {
+    return this.http.post('http://localhost:3000/api/users/login', user)
+    .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()});
+  }
 
   getOneUser(userID) {
     return this.http.get(`http://localhost:3000/api/users/${userID}`)
       .map((userDetails)=>{
         return userDetails.json()
       });
+  }
     
 // COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
 //    signup(newUser){
@@ -42,5 +49,4 @@ export class UserInfoService {
 //        .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()});
 //    }
     
-  }
 }
