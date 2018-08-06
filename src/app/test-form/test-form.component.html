@@ -1,0 +1,20 @@
+<div class="container">
+  <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+    <label for="email">Email:</label> <br>
+    <input [(ngModel)]="email" type="text" name="email"> <br>
+    <label for="password">Enter Password:</label> <br>
+    <input [(ngModel)]="password" type="password" name="password"> <br>
+    <label for="password2">Repeat Password</label> <br>
+    <input [(ngModel)]="password2" type="password" name="password2"> <br>
+    <label for="firstName">First Name:</label> <br>
+    <input [(ngModel)]="firstName" type="text" name="firstName"> <br>
+    <label for="lastName">Last Name:</label> <br>
+    <input [(ngModel)]="lastName" type="text" name="lastName"> <br>
+    <label for="zip">Zip Code:</label> <br>
+    <input [(ngModel)]="zipCode" type="text" name="zipCode"> <br>
+    <label for="phoneNumber">Phone Number:</label> <br>
+    <input [(ngModel)]="phoneNumber" type="text" name="phoneNumber"> <br>
+    <button>Submit</button>
+  </form>
+</div>
+  <p><b>{{errorMessage}}</b></p>
