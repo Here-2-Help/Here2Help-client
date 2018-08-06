@@ -11,6 +11,7 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 
 // v-- COMPONENT IMPORTS --v
 import { AppComponent }             from './app.component';
+import { LandingComponent }         from './landing/landing.component'
 import { SignupComponent }          from './signup/signup.component';
 
 // v-- SERVICES IMPORTS --v
@@ -21,13 +22,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // v-- ROUTES --v
 const routes: Routes = [
-  {path: '', component: SignupComponent},
+  {path: '', component: LandingComponent},
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
