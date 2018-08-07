@@ -17,7 +17,7 @@
                 <tbody>
                   <tr>
                     <td>City:</td>
-                    <td>{{googleCity[0].postcode_localities[0]}}</td>
+                    <!-- <td>{{googleCity[0].postcode_localities[0]}}</td> -->
                   </tr>
                   <tr>
                     <td>Joined:</td>
@@ -60,11 +60,11 @@
             <span class="text-white">Events:</span>
           </div>
 
-          <div class="card-body">
+          <div class="card-body" *ngFor="let eachEvent of userDetails.events">
 
-            <h6>Name: </h6>
+            <h6><b>Name: </b>{{eachEvent.name}}</h6>
 
-            <p>Panel body</p>
+            <p><b>Type: </b>{{eachEvent.type}}</p>
 
           </div>
 
@@ -78,9 +78,11 @@
               <span class="text-white">Organizations</span>
             </div>
 
-            <div class="card-body">
-                <h6>Name: </h6>
-                <p>Panel body</p>
+            <div class="card-body" *ngFor="let eachOrg of userDetails.organizations">
+                
+              <h6><b>Name: </b>{{eachOrg.name}}</h6>
+              
+              <p>Panel body</p>
   
             </div>
   
@@ -94,9 +96,9 @@
                 <span class="text-white">Reviews:</span>
               </div>
     
-              <div class="card-body">
+              <div class="card-body" *ngFor="let eachReview of userDetails.reviews">
     
-                <h6>Review Of: </h6>
+                <h6>Review Of: {{eachReview.content}}</h6>
 
                 <p>Panel body</p>
     
