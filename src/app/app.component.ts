@@ -10,27 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   constructor(
     private userInfo: UserInfoService,
     private router: Router
   ) {}
-
-  isCollapsed:Boolean = true;
-
-  title = 'app';
-
-  logout() {
-    this.userInfo.logout()
-    .subscribe((res) => {console.log(res); this.router.navigate(['/'])});
-  }
-
+  
   ngOnInit() {
-    console.log('currentUser', this.userInfo.currentUser);
-    this.userInfo.isLoggedIn().subscribe(res => {console.log('res:', res)}, err => {console.log('err:', JSON.parse(err._body).message)})
-    // console.log(this.userInfo.isLoggedIn().subscribe(res => {res}, err => {err.message}));
-
+    this.userInfo.isLoggedIn().subscribe();
   }
-
+  title = 'app';
 }
 
 // I'M HIDING ALL THIS HTML HERE IN CASE WE WANT TO GO BACK TO THE NORMAL BOOTSTRAP NAVBAR INSTEAD OF THE

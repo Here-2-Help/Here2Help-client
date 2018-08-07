@@ -43,4 +43,7 @@ export class TestFormComponent implements OnInit {
     
   }
 
+  isLoggedIn() {
+    this.userInfo.isLoggedIn().subscribe();
+  }
 }
