@@ -53,54 +53,101 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
 
           <!-- ----------------------------------------------------------------------- -->
+          <!-- THE USER'S EVENTS -->
         
         <div class="card mb-3 user-events-panel">
 
           <div class="card-header bg-success">
-            <span class="text-white">Events:</span>
+            <span class="text-white">Events</span>
           </div>
 
           <div class="card-body" *ngFor="let eachEvent of userDetails.events">
 
-            <h6><b>Name: </b>{{eachEvent.name}}</h6>
+            <div class="row">  
 
-            <p><b>Type: </b>{{eachEvent.type}}</p>
+                <div class="events-right col-6">
+                
+                  <p class="card-text"><b>Name: </b><a href="event/{{eachEvent._id}}">{{eachEvent.name}}</a></p>
+                  <p class="card-text"><b>Status: </b>{{eachEvent.status}}</p>
+                  <p class="card-text"><b>Date and Time: </b>
+                    <br>{{eachEvent.startTime | date : 'medium' }}</p>
+                  <p class="card-text"><b>Location: </b>{{eachEvent.location}}</p>
+
+                </div>
+
+                <div class="events-left col-6 mx-auto my-auto">
+
+                  <img class="img-responsive user-page-image" src="{{eachEvent.mainPhoto}}">
+
+                </div>
+
+              </div>
 
           </div>
 
         </div>
 
         <!-- ----------------------------------------------------------------------- -->
+        <!-- THE USER'S ORGANIZATIONS -->
 
         <div class="card mb-3 user-orgs-panel">
 
             <div class="card-header bg-success">
               <span class="text-white">Organizations</span>
             </div>
-
+  
             <div class="card-body" *ngFor="let eachOrg of userDetails.organizations">
-                
-              <h6><b>Name: </b>{{eachOrg.name}}</h6>
-              
-              <p>Panel body</p>
+  
+              <div class="row">  
+  
+                  <div class="events-right col-6">
+                  
+                    <p class="card-text"><b>Name: </b><a href="event/{{eachOrg._id}}">{{eachOrg.name}}</a></p>
+                    <p class="card-text"><b>Address: </b>{{eachOrg.address}}</p>
+                    <p class="card-text"><b>Number of Members: </b>{{eachOrg.staff.length}}</p>
+                    <p class="card-text"><b>Number of Events: </b>{{eachOrg.events.length}}</p>
+  
+                  </div>
+  
+                  <div class="events-left col-6 mx-auto my-auto">
+  
+                    <img class="img-responsive user-page-image" src="{{eachOrg.mainPhoto}}">
+  
+                  </div>
+  
+                </div>
   
             </div>
   
           </div>
 
           <!-- ----------------------------------------------------------------------- -->
+          <!-- THE USER'S REVIEWS -->
 
-          <div class="card card-success mb-3 user-reviews-panel">
+          <div class="card mb-3 user-reviews-panel">
 
               <div class="card-header bg-success">
-                <span class="text-white">Reviews:</span>
+                <span class="text-white">Reviews</span>
               </div>
     
               <div class="card-body" *ngFor="let eachReview of userDetails.reviews">
     
-                <h6>Review Of: {{eachReview.content}}</h6>
-
-                <p>Panel body</p>
+                <div class="row">  
+    
+                    <div class="events-right col-6">
+                    
+                      <p class="card-text">{{eachReview.content}}</p>
+                      <p class="card-text"><a href="/review/{{eachReview}}">Review Details</a></p>
+    
+                    </div>
+    
+                    <div class="events-left col-6 mx-auto my-auto">
+    
+                      <img class="img-responsive user-page-image" src="{{eachEvent.mainPhoto}}">
+    
+                    </div>
+    
+                  </div>
     
               </div>
     
