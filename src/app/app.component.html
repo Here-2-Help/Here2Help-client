@@ -21,12 +21,9 @@
                     <a class="nav-link" href="#">My Profile<span class="sr-only">(current)</span></a>
                     <!-- ---------------------------------------------------------------------------------- -->
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="this.userInfo.currentUser">
                     <!-- ---------------------------------------------------------------------------------- -->
-                    <span *ngIf="this.userInfo.currentUser" >
-                        Logged in as: {{this.userInfo.currentUser.firstName}}                     <!-- <a class="nav-link" href="#">My Profile</a> -->
-                    </span>
-
+                    <a class="nav-link" href="#">Logged in as: {{this.userInfo.currentUser.firstName}}</a>
                     <!-- ---------------------------------------------------------------------------------- -->
                     </li>                
                 <li class="nav-item">
