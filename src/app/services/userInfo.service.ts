@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 })
 export class UserInfoService {
 
-  key:String = 'AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y';
+  // key:String = 'AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y';
   
   currentUser: any;
 
@@ -19,6 +19,13 @@ export class UserInfoService {
   handleError(e) {
     console.log(e);
      return Observable.throw(e.json().message);
+  }
+
+  pullCityFromZip(zipCode){
+    return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&sensor=true`,{})
+      .subscribe((googleCity)=>{
+          return googleCity.json();
+      })
   }
 
   signup(newUser) {
