@@ -35,3 +35,8 @@
 .user-pic{
     max-width: 100%;
 }
+
+.bottom-buttons{
+    display: flex;
+    justify-content: space-between;
+}

@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 })
 export class UserInfoService {
 
+  key:String = 'AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y';
+  
   currentUser: any;
 
   constructor(private http: Http) { }
