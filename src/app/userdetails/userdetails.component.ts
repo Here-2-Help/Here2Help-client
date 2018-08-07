@@ -36,35 +36,35 @@ export class UserdetailsComponent implements OnInit {
   //     })
   // }
 
-  getOneUser(userID) {
-    return this.http.get(`http://localhost:3000/api/users/${userID}`)
-      .map((userDetails)=>{
-        return userDetails.json()
-      });
-  }
+  // getOneUser(userID) {
+  //   return this.http.get(`http://localhost:3000/api/users/${userID}`)
+  //     .map((userDetails)=>{
+  //       return userDetails.json()
+  //     });
+  // }
     
   ngOnInit() {
     this.userProfileRouter.params
     .subscribe((params)=>{
       this.localUserInfo.getOneUser(params['id'])
       .subscribe((returnedUserDetails)=>{
-        console.log(returnedUserDetails);
+        console.log('-----------------returnedUserDetails:',returnedUserDetails);
         this.userDetails = returnedUserDetails;
-        this.userZipCode = returnedUserDetails.zipCode;
+        // this.userZipCode = returnedUserDetails.zipCode;
         // console.log(this.userZipCode);
-        this.pullCityFromZip(this.userZipCode);
+        // this.pullCityFromZip(this.userZipCode);
         // this.googleZipCodeTest();
       })
     })
   }
 
-  pullCityFromZip(zipCode){
-    return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.userZipCode}&sensor=true`)
-      .subscribe((googleCity)=>{
-          // console.log(googleCity.json());
-          // console.log(this.googleCity[0].postcode_localities[0]);
-          return this.googleCity = googleCity.json().results;
-      })
-  }
+  // pullCityFromZip(zipCode){
+  //   return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.userZipCode}&sensor=true`)
+  //     .subscribe((googleCity)=>{
+  //         // console.log(googleCity.json());
+  //         // console.log(this.googleCity[0].postcode_localities[0]);
+  //         return this.googleCity = googleCity.json().results;
+  //     })
+  // }
     
 }
