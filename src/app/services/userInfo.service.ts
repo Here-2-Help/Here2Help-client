@@ -18,7 +18,7 @@ export class UserInfoService {
 
   handleError(e) {
     console.log(e);
-     return Observable.throw(e.json().message);
+    return Observable.throw(e.json().message);
   }
 
   signup(newUser) {
@@ -45,11 +45,11 @@ export class UserInfoService {
   }
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/user/loggedin`, {withCredentials: true})
-      .map((res) => {
-        return JSON.parse(res._body)
-      })
-      .catch(this.handleError);
+    return this.http.get(`http://localhost:3000/api/users/loggedin`, {withCredentials: true})
+      .map((res) => {console.log('res.json()._body', res.json()._body)})
+        // return JSON.parse(res._body)
+      // })
+      // .catch(this.handleError);
   }
     
 // COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
