@@ -56,6 +56,11 @@ export class UserInfoService {
     return this.http.get(`http://localhost:3000/api/users/loggedin`, {withCredentials: true})
     .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
   }
+
+  editUser(userID,editedInfo){
+    return this.http.post(`http://localhost:3000/api/users/edit/${userID}`, editedInfo, {withCredentials: true})
+    .map(res => res.json());
+  }
     
 // COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
 //    signup(newUser){

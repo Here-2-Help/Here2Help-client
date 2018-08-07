@@ -59,10 +59,10 @@
             <div class=" col-md-9 col-lg-9 "> 
               <table class="table table-user-information">
                 <tbody>
-                  <form>
+                  <form #editedUserInfo="ngForm" (ngSubmit)="saveEditedProfile(editedUserInfo)">
                   <tr>
                     <td>ZIP Code:</td>
-                    <td><input type="text" #editedProfile="ngModel" name="zipCode" value="{{userDetails.zipCode}}"></td>
+                    <td><input type="text" [(ngModel)]="zipCode" name="zipCode" value="{{userDetails.zipCode}}"></td>
                   </tr>
                   <tr>
                     <td>Joined:</td>
@@ -70,20 +70,20 @@
                   </tr>
                   <tr>
                     <td>Email:</td>
-                    <td><a href="mailto:{{userDetails.email}}">{{userDetails.email}}</a></td>
+                    <td><input type="text" [(ngModel)]="email" name="email" value="{{userDetails.email}}"></td>
                   </tr>
                
                   <tr>
                     <tr>
                       <td>Phone Number:</td>
-                      <td>{{userDetails.phoneNumber}}</td>
-
-                    </tr>
-                  </form>
+                      <td><input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" value="{{userDetails.phoneNumber}}"></td>
+                  </tr>
+                </form>
                 </tbody>
               </table>
               <div class="bottom-buttons">
-                <button (click)="editProfile()" class="float-left btn btn-success btn-sm mr-1">Save Changes</button>
+                <button (click)="editProfile()" class="float-left btn btn-warning btn-sm mr-1">Cancel</button>
+                <button (ngSubmit)="saveEditedProfile(editedUserInfo)" class="float-left btn btn-success btn-sm mr-1">Save Changes</button>
               </div>
             </div>
           </div>

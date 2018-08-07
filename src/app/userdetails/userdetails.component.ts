@@ -1,9 +1,7 @@
 import { Component, OnInit, Sanitizer }   from '@angular/core';
-import { ActivatedRoute }                 from '@angular/router';
+import { ActivatedRoute, Router }                 from '@angular/router';
 import { UserInfoService }                from '../services/userInfo.service';
 import { Http, Response }                 from '@angular/http';
-
-
 
 @Component({
   selector:     'app-userdetails',
@@ -16,7 +14,8 @@ export class UserdetailsComponent implements OnInit {
   constructor(private localUserInfo:      UserInfoService,
               private userProfileRouter:  ActivatedRoute,
               private localDOMSanitizer:  Sanitizer,
-              private http:               Http) { };
+              private http:               Http,
+              private localRouter:        Router) { };
     
   userDetails:any = {};
     
@@ -39,6 +38,15 @@ export class UserdetailsComponent implements OnInit {
       return this.editingProfile = true;
     }
   }
+
+  saveEditedProfile() {
+    console.log(this.editedProfile.value);
+    this.localUserInfo.editUser(this.userDetails._id,this.editedProfile)
+      .subscribe((updatedUserInfo)=>{
+        console.log(updatedUserInfo)
+        this.localRouter.navigate(['']);
+      })
+  };
 
   // googleZipCodeTest(){
   //   return this.localUserInfo.pullCityFromZip(this.userZipCode)
@@ -63,6 +71,8 @@ export class UserdetailsComponent implements OnInit {
       .subscribe((returnedUserDetails)=>{
         // console.log('-----------------returnedUserDetails:',returnedUserDetails);
         this.userDetails = returnedUserDetails;
+        this.editedProfile = returnedUserDetails;
+        // console.log(this.editedProfile);
         this.userZipCode = returnedUserDetails.zipCode;
         // console.log(this.userZipCode);
         this.pullCityFromZip(this.userZipCode);
@@ -74,7 +84,7 @@ export class UserdetailsComponent implements OnInit {
   pullCityFromZip(zipCode){
     return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.userZipCode}&sensor=true`)
       .subscribe((responseFromGoogle)=>{
-          console.log('-----------------------responseFromGoogle.json()',responseFromGoogle.json().results[0].postcode_localities[0]);
+          // console.log('-----------------------responseFromGoogle.json()',responseFromGoogle.json().results[0].postcode_localities[0]);
           // console.log('----------------------------unformatted res',responseFromGoogle);
           // console.log(this.googleCity);
           return this.googleCity = responseFromGoogle.json().results[0].postcode_localities[0];
