@@ -62,7 +62,7 @@
                   <form #editedUserInfo="ngForm" (ngSubmit)="saveEditedProfile(editedUserInfo)">
                   <tr>
                     <td>ZIP Code:</td>
-                    <td><input type="text" [(ngModel)]="zipCode" name="zipCode" value="{{userDetails.zipCode}}"></td>
+                    <td><input class="rounded" type="text" [(ngModel)]="zipCode" name="zipCode" value="{{userDetails.zipCode}}"></td>
                   </tr>
                   <tr>
                     <td>Joined:</td>
@@ -70,13 +70,13 @@
                   </tr>
                   <tr>
                     <td>Email:</td>
-                    <td><input type="text" [(ngModel)]="email" name="email" value="{{userDetails.email}}"></td>
+                    <td><input class="rounded" type="text" [(ngModel)]="email" name="email" value="{{userDetails.email}}"></td>
                   </tr>
                
                   <tr>
                     <tr>
                       <td>Phone Number:</td>
-                      <td><input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" value="{{userDetails.phoneNumber}}"></td>
+                      <td><input class="rounded" type="text" [(ngModel)]="phoneNumber" name="phoneNumber" value="{{userDetails.phoneNumber}}"></td>
                   </tr>
                 </form>
                 </tbody>
