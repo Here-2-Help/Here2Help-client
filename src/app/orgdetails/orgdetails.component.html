@@ -1,127 +1,44 @@
-<div class="container user-info-page">
-    <div class="row">
-  
-      <!-- LEFT HALF CONTAINING USER DETAILS -->
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
-  
-  
-        <div class="panel panel-info panel-success">
-          <div class="panel-heading">
-            <h3 class="panel-title">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
-              <div class=" col-md-9 col-lg-9 "> 
-                <table class="table table-user-information">
-                  <tbody>
+<div class="container org-details-container">
+  <!-- Top row -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
+      <div *ngIf="orgInfo.currentOrg" class="panel panel-info panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{orgInfo.currentOrg.name}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center">
+              <img alt="User Pic" src="{{orgInfo.currentOrg.mainPhoto}}" class="rounded-circle img-responsive user-pic"> </div>
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>City:</td>
+                    <!-- <td>{{googleCity[0].postcode_localities[0]}}</td> -->
+                  </tr>
+                  <tr>
+                    <td>Joined:</td>
+                    <td>{{orgInfo.currentOrg.createdAt | date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td>
+                      <a href="mailto:{{orgInfo.currentOrg.email}}">{{orgInfo.currentOrg.email}}</a>
+                    </td>
+                  </tr>
+
+                  <tr>
                     <tr>
-                      <td>City:</td>
-                      <td>{{googleCity[0].postcode_localities[0]}}</td>
+                      <td>Phone Number:</td>
+                      <td>{{orgInfo.currentOrg.phoneNumber}}</td>
                     </tr>
-                    <tr>
-                      <td>Joined:</td>
-                      <td>{{userDetails.createdAt | date }}</td>
-                    </tr>
-                    <tr>
-                      <td>Email:</td>
-                      <td><a href="mailto:{{userDetails.email}}">{{userDetails.email}}</a></td>
-                    </tr>
-                 
-                    <tr>
-                      <tr>
-                        <td>Phone Number:</td>
-                        <td>{{userDetails.phoneNumber}}</td>
-  
-                      </tr>
-                  </tbody>
-                </table>
-                <div class="bottom-buttons">
-                  <a href="#" class="btn btn-success btn-sm mr-1">My Sales Performance</a>
-                  <a href="#" class="btn btn-success btn-sm">Team Sales Performance</a>
-                </div>
-              </div>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-  
-  
       </div>
-  
-      <!-- RIGHT HALF CONTAINING EVENT, ORG, AND REVIEW INFO -->
-  
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
-  
-            <!-- ----------------------------------------------------------------------- -->
-          
-          <div class="card mb-3 user-events-panel">
-  
-            <div class="card-header bg-success">
-              <span class="text-white">Events:</span>
-            </div>
-  
-            <div class="card-body">
-  
-              <h6>Name: </h6>
-  
-              <p>Panel body</p>
-  
-            </div>
-  
-          </div>
-  
-          <!-- ----------------------------------------------------------------------- -->
-  
-          <div class="card mb-3 user-orgs-panel">
-  
-              <div class="card-header bg-success">
-                <span class="text-white">Organizations</span>
-              </div>
-  
-              <div class="card-body">
-                  <h6>Name: </h6>
-                  <p>Panel body</p>
-    
-              </div>
-    
-            </div>
-  
-            <!-- ----------------------------------------------------------------------- -->
-  
-            <div class="card card-success mb-3 user-reviews-panel">
-  
-                <div class="card-header bg-success">
-                  <span class="text-white">Reviews:</span>
-                </div>
-      
-                <div class="card-body">
-      
-                  <h6>Review Of: </h6>
-  
-                  <p>Panel body</p>
-      
-                </div>
-      
-              </div>
-  
-              <!-- ----------------------------------------------------------------------- -->
-  
-        </div>
-  
     </div>
   </div>
-  
-  
-  <!-- <div class="map-container"><h1>Google Maps:</h1>
-  
-    <iframe
-    class="e2e-iframe-trusted-src"
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y&q={{userDetails.zipCode}}" allowfullscreen>
-    </iframe>
-    
-    AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y
-  
-  </div> -->
+</div>

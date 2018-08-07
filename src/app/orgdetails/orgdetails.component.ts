@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrgInfoService } from '../services/orgInfo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-orgdetails',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgdetailsComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    private orgInfo: OrgInfoService, 
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.getOrg();
   }
 
+  getOrg() {
+    this.route.params.subscribe(params => {
+      this.orgInfo.getOneOrg(params['id'])
+      .subscribe(res => console.log(res));
+    })
+  }
 }
