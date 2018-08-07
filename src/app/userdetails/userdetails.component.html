@@ -1,6 +1,61 @@
-<p>
-  userdetails works!
-</p>
+<div class="container user-info-page">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad mx-auto mt-5">
 
 
-<p>{{userDetails.firstName}}</p>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
+            <div class=" col-md-9 col-lg-9 "> 
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>ZIP Code:</td>
+                    <td>{{userDetails.zipCode}}</td>
+                  </tr>
+                  <tr>
+                    <td>Joined:</td>
+                    <td>{{userDetails.createdAt | date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><a href="mailto:{{userDetails.email}}">{{userDetails.email}}</a></td>
+                  </tr>
+               
+                  <tr>
+                    <tr>
+                      <td>Phone Number:</td>
+                      <td>{{userDetails.phoneNumber}}</td>
+
+                    </tr>
+                </tbody>
+              </table>
+              <div class="bottom-buttons">
+                <a href="#" class="btn btn-success">My Sales Performance</a>
+                <a href="#" class="btn btn-success">Team Sales Performance</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="map-container"><h1>Google Maps:</h1>
+
+  <iframe
+  class="e2e-iframe-trusted-src"
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y&q={{userDetails.zipCode}}" allowfullscreen>
+  </iframe>
+  
+  AIzaSyBQmB4EGSCfePPlGmYGD-MUaLBsP49sP-Y
+
+</div> -->
