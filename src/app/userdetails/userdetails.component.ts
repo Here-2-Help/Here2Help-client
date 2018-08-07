@@ -48,6 +48,7 @@ export class UserdetailsComponent implements OnInit {
     .subscribe((params)=>{
       this.localUserInfo.getOneUser(params['id'])
       .subscribe((returnedUserDetails)=>{
+        console.log(returnedUserDetails);
         this.userDetails = returnedUserDetails;
         this.userZipCode = returnedUserDetails.zipCode;
         // console.log(this.userZipCode);
