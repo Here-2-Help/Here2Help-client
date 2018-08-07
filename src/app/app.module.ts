@@ -25,6 +25,7 @@ import { OrgInfoService }           from './services/orgInfo.service'
 import { NgbModule }                from '@ng-bootstrap/ng-bootstrap';
 import { TestFormComponent }        from './test-form/test-form.component';
 import { UserdetailsComponent }     from './userdetails/userdetails.component';
+import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
 
 // v-- ROUTES --v
 const routes: Routes = [
@@ -34,8 +35,8 @@ const routes: Routes = [
   {path: 'users',           component: UserdetailsComponent }, // <-- LIST OF ALL USERS
   {path: 'profile/:id',     component: UserdetailsComponent }, // <-- MY PROFILE PAGE + OTHER USERS' PROFILES
 
-  {path: 'orgs',            component: UserdetailsComponent }, // <-- LIST OF ALL ORGS
-  {path: 'org/:id',         component: UserdetailsComponent }, // <-- ORG DETAILS PAGE
+  {path: 'orgs',            component: OrgdetailsComponent }, // <-- LIST OF ALL ORGS
+  {path: 'org/:id',         component: OrgdetailsComponent }, // <-- ORG DETAILS PAGE
 
   {path: 'events',          component: UserdetailsComponent }, // <-- LIST OF ALL EVENTS
   {path: 'event/:id',       component: UserdetailsComponent }, // <-- EVENT DETAILS PAGE
@@ -52,7 +53,8 @@ const routes: Routes = [
     SignupComponent,
     LandingComponent,
     TestFormComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    OrgdetailsComponent
   ],
   imports: [
     BrowserModule,
