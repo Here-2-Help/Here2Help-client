@@ -4,12 +4,13 @@
     <!-- LEFT HALF CONTAINING USER DETAILS -->
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
 
+      <!-- USER DETAILS PANEL ON LEFT OF SCREEN -->
 
-      <div class="panel panel-info panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</h3>
-        </div>
-        <div class="panel-body">
+    
+      <div class="card card-success" *ngIf="!editingProfile">
+
+          <span class="card-header bg-success text-white">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</span>
+        <div class="card-body">
           <div class="row">
             <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
             <div class=" col-md-9 col-lg-9 "> 
@@ -17,7 +18,7 @@
                 <tbody>
                   <tr>
                     <td>City:</td>
-                    <!-- <td>{{googleCity[0].postcode_localities[0]}}</td> -->
+                    <td>{{googleCity}}</td>
                   </tr>
                   <tr>
                     <td>Joined:</td>
@@ -37,14 +38,57 @@
                 </tbody>
               </table>
               <div class="bottom-buttons">
-                <a href="#" class="btn btn-success btn-sm mr-1">My Sales Performance</a>
-                <a href="#" class="btn btn-success btn-sm">Team Sales Performance</a>
+                  <button (click)="editProfile()" class="float-left btn btn-warning btn-sm mr-1">Edit Profile</button>
+                  <button class="float-right btn btn-danger btn-sm">Delete Account</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- ------------------------------------------------------------------------------------------------- -->
+
+      <!-- THIS SECTION ONLY SHOWS UP IF EDITINGPROFILE BOOLEAN IS TRUE -->
+
+      <div class="card card-success" *ngIf="editingProfile">
+          
+          <span class="card-header bg-success text-white">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</span>
+          <div class="card-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
+            <div class=" col-md-9 col-lg-9 "> 
+              <table class="table table-user-information">
+                <tbody>
+                  <form>
+                  <tr>
+                    <td>ZIP Code:</td>
+                    <td><input type="text" #editedProfile="ngModel" name="zipCode" value="{{userDetails.zipCode}}"></td>
+                  </tr>
+                  <tr>
+                    <td>Joined:</td>
+                    <td>{{userDetails.createdAt | date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><a href="mailto:{{userDetails.email}}">{{userDetails.email}}</a></td>
+                  </tr>
+               
+                  <tr>
+                    <tr>
+                      <td>Phone Number:</td>
+                      <td>{{userDetails.phoneNumber}}</td>
+
+                    </tr>
+                  </form>
+                </tbody>
+              </table>
+              <div class="bottom-buttons">
+                <button (click)="editProfile()" class="float-left btn btn-success btn-sm mr-1">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -55,7 +99,7 @@
           <!-- ----------------------------------------------------------------------- -->
           <!-- THE USER'S EVENTS -->
         
-        <div class="card mb-3 user-events-panel">
+        <div class="card mb-3 user-events-card">
 
           <div class="card-header bg-success">
             <span class="text-white">Events</span>
@@ -65,7 +109,7 @@
 
             <div class="row">  
 
-                <div class="events-right col-6">
+                <div class="events-left col-6">
                 
                   <p class="card-text"><b>Name: </b><a href="event/{{eachEvent._id}}">{{eachEvent.name}}</a></p>
                   <p class="card-text"><b>Status: </b>{{eachEvent.status}}</p>
@@ -75,9 +119,9 @@
 
                 </div>
 
-                <div class="events-left col-6 mx-auto my-auto">
+                <div class="events-right col-6 mx-auto my-auto">
 
-                  <img class="img-responsive user-page-image" src="{{eachEvent.mainPhoto}}">
+                  <img class="float-right img-responsive user-page-image" src="{{eachEvent.mainPhoto}}">
 
                 </div>
 
@@ -90,7 +134,7 @@
         <!-- ----------------------------------------------------------------------- -->
         <!-- THE USER'S ORGANIZATIONS -->
 
-        <div class="card mb-3 user-orgs-panel">
+        <div class="card mb-3 user-orgs-card">
 
             <div class="card-header bg-success">
               <span class="text-white">Organizations</span>
@@ -100,31 +144,32 @@
   
               <div class="row">  
   
-                  <div class="events-right col-6">
+                  <div class="events-left col-6">
                   
-                    <p class="card-text"><b>Name: </b><a href="event/{{eachOrg._id}}">{{eachOrg.name}}</a></p>
+                    <p class="card-text"><b>Name: </b><a href="organization/{{eachOrg._id}}">{{eachOrg.name}}</a></p>
                     <p class="card-text"><b>Address: </b>{{eachOrg.address}}</p>
                     <p class="card-text"><b>Number of Members: </b>{{eachOrg.staff.length}}</p>
                     <p class="card-text"><b>Number of Events: </b>{{eachOrg.events.length}}</p>
   
                   </div>
   
-                  <div class="events-left col-6 mx-auto my-auto">
+                  <div class="pull-right events-right col-6 mx-auto my-auto">
   
-                    <img class="img-responsive user-page-image" src="{{eachOrg.mainPhoto}}">
+                    <img class="float-right img-responsive user-page-image" src="{{eachOrg.mainPhoto}}">
   
                   </div>
   
                 </div>
   
             </div>
+
   
           </div>
 
           <!-- ----------------------------------------------------------------------- -->
           <!-- THE USER'S REVIEWS -->
 
-          <div class="card mb-3 user-reviews-panel">
+          <div class="card mb-3 user-reviews-card">
 
               <div class="card-header bg-success">
                 <span class="text-white">Reviews</span>
@@ -143,7 +188,7 @@
     
                     <div class="events-left col-6 mx-auto my-auto">
     
-                      <img class="img-responsive user-page-image" src="{{eachEvent.mainPhoto}}">
+                      <img class="float-right img-responsive user-page-image" src="{{eachReview.reviewPhoto}}">
     
                     </div>
     
