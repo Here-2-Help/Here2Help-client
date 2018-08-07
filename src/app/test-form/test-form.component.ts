@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class TestFormComponent implements OnInit {
   errorMessage: String;
 
-  constructor(private userInfo: UserInfoService, private router: Router) { }
+  constructor(
+    private userInfo: UserInfoService, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -40,4 +43,7 @@ export class TestFormComponent implements OnInit {
     
   }
 
+  isLoggedIn() {
+    this.userInfo.isLoggedIn().subscribe();
+  }
 }
