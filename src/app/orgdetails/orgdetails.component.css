@@ -1,0 +1,22 @@
+.img-custom {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.img-custom-container {
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-custom-container {
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-custom {
+  min-width: 100%;
+}

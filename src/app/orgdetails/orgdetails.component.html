@@ -1,44 +1,52 @@
 <div class="container org-details-container">
   <!-- Top row -->
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad mx-auto mt-5">
-      <div *ngIf="orgInfo.currentOrg" class="panel panel-info panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{orgInfo.currentOrg.name}}</h3>
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
+        <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
+    </div>
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 card-custom-container">
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>Organization Info</b></span>
         </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center">
-              <img alt="User Pic" src="{{orgInfo.currentOrg.mainPhoto}}" class="rounded-circle img-responsive user-pic"> </div>
-            <div class=" col-md-9 col-lg-9 ">
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td>City:</td>
-                    <!-- <td>{{googleCity[0].postcode_localities[0]}}</td> -->
-                  </tr>
-                  <tr>
-                    <td>Joined:</td>
-                    <td>{{orgInfo.currentOrg.createdAt | date }}</td>
-                  </tr>
-                  <tr>
-                    <td>Email:</td>
-                    <td>
-                      <a href="mailto:{{orgInfo.currentOrg.email}}">{{orgInfo.currentOrg.email}}</a>
-                    </td>
-                  </tr>
+        <div class="card-body">
+          <p class="card-text"><b>Name: </b><a href="">{{orgInfo.currentOrg.name}}</a></p>
+          <hr>
+          <p class="card-text"><b>Address: </b>{{orgInfo.currentOrg.address}}</p>
+          <hr>
+          <p class="card-text"><b>Phone Number: </b>{{orgInfo.currentOrg.phoneNumber}}</p>
+          <hr>
+          <p class="card-text"><b>Email: </b>{{orgInfo.currentOrg.email}}</p>
+          <hr>
+          <p class="card-text"><b>Description: </b>{{orgInfo.currentOrg.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                  <tr>
-                    <tr>
-                      <td>Phone Number:</td>
-                      <td>{{orgInfo.currentOrg.phoneNumber}}</td>
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+  <!-- Top row -->
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
+      <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
+    </div>
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 card-custom-container">
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>Organization Info</b></span>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>Name: </b><a href="">{{orgInfo.currentOrg.name}}</a></p>
+          <hr>
+          <p class="card-text"><b>Address: </b>{{orgInfo.currentOrg.address}}</p>
+          <hr>
+          <p class="card-text"><b>Phone Number: </b>{{orgInfo.currentOrg.phoneNumber}}</p>
+          <hr>
+          <p class="card-text"><b>Email: </b>{{orgInfo.currentOrg.email}}</p>
+          <hr>
+          <p class="card-text"><b>Description: </b>{{orgInfo.currentOrg.description}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
