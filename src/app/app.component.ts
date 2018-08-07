@@ -17,7 +17,7 @@ export class AppComponent {
   ) {}
   
   ngOnInit() {
-    // this.userInfo.isLoggedIn().subscribe();
+    this.userInfo.isLoggedIn().subscribe();
   }
   title = 'app';
 }

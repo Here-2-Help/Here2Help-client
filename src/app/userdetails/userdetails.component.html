@@ -9,10 +9,10 @@
     
       <div class="card card-success" *ngIf="!editingProfile">
 
-          <span class="card-header bg-success text-white">{{userDetails.firstName}}&nbsp;&nbsp;{{userDetails.lastName}}</span>
+          <span class="card-header bg-success text-white">{{editedProfile.firstName}}&nbsp;&nbsp;{{editedProfile.lastName}}</span>
         <div class="card-body">
           <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{editedProfile.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
             <div class=" col-md-9 col-lg-9 "> 
               <table class="table table-user-information">
                 <tbody>
@@ -22,17 +22,17 @@
                   </tr>
                   <tr>
                     <td>Joined:</td>
-                    <td>{{userDetails.createdAt | date }}</td>
+                    <td>{{editedProfile.createdAt | date }}</td>
                   </tr>
                   <tr>
                     <td>Email:</td>
-                    <td><a href="mailto:{{userDetails.email}}">{{userDetails.email}}</a></td>
+                    <td><a href="mailto:{{editedProfile.email}}">{{editedProfile.email}}</a></td>
                   </tr>
                
                   <tr>
                     <tr>
                       <td>Phone Number:</td>
-                      <td>{{userDetails.phoneNumber}}</td>
+                      <td>{{editedProfile.phoneNumber}}</td>
 
                     </tr>
                 </tbody>
@@ -57,34 +57,23 @@
           <div class="row">
             <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{userDetails.profilePicture}}" class="rounded-circle img-responsive user-pic"> </div>
             <div class=" col-md-9 col-lg-9 "> 
-              <table class="table table-user-information">
-                <tbody>
+
                   <form #editedUserInfo="ngForm" (ngSubmit)="saveEditedProfile(editedUserInfo)">
-                  <tr>
-                    <td>ZIP Code:</td>
-                    <td><input type="text" [(ngModel)]="zipCode" name="zipCode" value="{{userDetails.zipCode}}"></td>
-                  </tr>
-                  <tr>
-                    <td>Joined:</td>
-                    <td>{{userDetails.createdAt | date }}</td>
-                  </tr>
-                  <tr>
-                    <td>Email:</td>
-                    <td><input type="text" [(ngModel)]="email" name="email" value="{{userDetails.email}}"></td>
-                  </tr>
-               
-                  <tr>
-                    <tr>
-                      <td>Phone Number:</td>
-                      <td><input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" value="{{userDetails.phoneNumber}}"></td>
-                  </tr>
-                </form>
-                </tbody>
-              </table>
-              <div class="bottom-buttons">
-                <button (click)="editProfile()" class="float-left btn btn-warning btn-sm mr-1">Cancel</button>
-                <button (ngSubmit)="saveEditedProfile(editedUserInfo)" class="float-left btn btn-success btn-sm mr-1">Save Changes</button>
-              </div>
+                  
+                    <p class="card-info">ZIP Code:
+                    <input class="rounded float-right" type="text" [(ngModel)]="zipCode" name="zipCode" value="{{userDetails.zipCode}}"></p>
+                  
+                    <p class="card-info">Email:
+                    <input class="rounded float-right" type="text" [(ngModel)]="email" name="email" value="{{userDetails.email}}"></p>
+                  
+                      <p class="card-info">Phone Number:
+                      <input class="rounded float-right" type="text" [(ngModel)]="phoneNumber" name="phoneNumber" value="{{userDetails.phoneNumber}}"></p>
+                  
+                      <div class="bottom-buttons">
+                        <button (click)="editProfile()" class="float-left btn btn-warning btn-sm mr-1">Cancel</button>
+                        <button class="float-left btn btn-success btn-sm mr-1">Save Changes</button>
+                      </div>
+                    </form>
             </div>
           </div>
         </div>

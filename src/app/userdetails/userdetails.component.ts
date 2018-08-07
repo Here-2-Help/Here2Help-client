@@ -39,12 +39,11 @@ export class UserdetailsComponent implements OnInit {
     }
   }
 
-  saveEditedProfile() {
-    console.log(this.editedProfile.value);
-    this.localUserInfo.editUser(this.userDetails._id,this.editedProfile)
+  saveEditedProfile(editedUserInfo) {
+    this.localUserInfo.editUser(this.userDetails._id, editedUserInfo.value)
       .subscribe((updatedUserInfo)=>{
-        console.log(updatedUserInfo)
-        this.localRouter.navigate(['']);
+        this.editedProfile = updatedUserInfo;
+        this.editProfile();
       })
   };
 
@@ -69,14 +68,10 @@ export class UserdetailsComponent implements OnInit {
     .subscribe((params)=>{
       this.localUserInfo.getOneUser(params['id'])
       .subscribe((returnedUserDetails)=>{
-        // console.log('-----------------returnedUserDetails:',returnedUserDetails);
         this.userDetails = returnedUserDetails;
         this.editedProfile = returnedUserDetails;
-        // console.log(this.editedProfile);
         this.userZipCode = returnedUserDetails.zipCode;
-        // console.log(this.userZipCode);
         this.pullCityFromZip(this.userZipCode);
-        // this.googleZipCodeTest();
       })
     })
   }
@@ -84,9 +79,6 @@ export class UserdetailsComponent implements OnInit {
   pullCityFromZip(zipCode){
     return this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.userZipCode}&sensor=true`)
       .subscribe((responseFromGoogle)=>{
-          // console.log('-----------------------responseFromGoogle.json()',responseFromGoogle.json().results[0].postcode_localities[0]);
-          // console.log('----------------------------unformatted res',responseFromGoogle);
-          // console.log(this.googleCity);
           return this.googleCity = responseFromGoogle.json().results[0].postcode_localities[0];
       })
   }
