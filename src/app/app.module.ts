@@ -26,6 +26,7 @@ import { NgbModule }                from '@ng-bootstrap/ng-bootstrap';
 import { TestFormComponent }        from './test-form/test-form.component';
 import { UserdetailsComponent }     from './userdetails/userdetails.component';
 import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
+import { SearchComponent } from './search/search.component';
 
 // v-- ROUTES --v
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     LandingComponent,
     TestFormComponent,
     UserdetailsComponent,
-    OrgdetailsComponent
+    OrgdetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
