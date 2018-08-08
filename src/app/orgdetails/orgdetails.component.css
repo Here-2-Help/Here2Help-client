@@ -10,13 +10,34 @@
   align-items: center;
 }
 
-.card-custom-container {
+.info-card-container {
   min-height: 420px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.event-card-container,
+.review-card-container {
+  margin: 15px 0;
+}
+
 .card-custom {
   min-width: 100%;
+}
+
+.event-img-container {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-img-container img {
+  max-width: 300px;
+  max-height: 180px;
+}
+
+.border-box {
+  border: 1px solid green;
 }
