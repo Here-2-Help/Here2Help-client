@@ -4,7 +4,7 @@
     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
         <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
     </div>
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 info-card-container">
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 info-card-container card-container">
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>Organization Info</b></span>
@@ -24,12 +24,32 @@
     </div>
   </div>
 
+  <!-- Photos row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.orgPhotos">    
+  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.orgPhotos.length === 0)">
+    <h2 >Pictures</h2>
+  </div>
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngFor="let photo of orgInfo.currentOrg.orgPhotos" >
+      <div class="card card-custom">
+        <div class="event-img-container">
+          <img class="img-responsive" src="{{photo}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  </span>
+  </span>
+
   <!-- Events row -->
-  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.events">  
+  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.events.length === 0)">
     <h2 >Events</h2>
   </div>
   <div class="row" *ngIf="orgInfo.currentOrg">
-    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 event-card-container" *ngFor="let event of orgInfo.currentOrg.events" >
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 event-card-container card-container" *ngFor="let event of orgInfo.currentOrg.events" >
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>{{event.name}}</b></span>
@@ -51,13 +71,17 @@
       </div>
     </div>
   </div>
+  </span>
+  </span>
 
   <!-- Reviews row -->
-  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.reviews">
+  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.reviews.length === 0)">
     <h2 >Reviews</h2>
   </div>
   <div class="row" *ngIf="orgInfo.currentOrg">
-    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container" *ngFor="let review of orgInfo.currentOrg.reviews" >
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container card-container" *ngFor="let review of orgInfo.currentOrg.reviews" >
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>By: </b>{{review.author.firstName}}</span>
@@ -73,26 +97,30 @@
       </div>
     </div>
   </div>
+  </span>
+  </span>
 
-  <!-- Reviews row -->
-  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+  <!-- Members row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.staff">
+  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.staff.length === 0)">
     <h2 >Members</h2>
   </div>
   <div class="row" *ngIf="orgInfo.currentOrg">
-    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container" *ngFor="let member of orgInfo.currentOrg.staff" >
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 member-card-container card-container" *ngFor="let member of orgInfo.currentOrg.staff" >
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>{{member.user.firstName}}</b></span>
         </div>
         <div class="event-img-container">
-          <img src="{{member.user.profilePicture}}" alt="">
+          <img class="rounded-circle img-responsive" src="{{member.user.profilePicture}}" alt="">
         </div>
         <div class="card-body">
-          <!-- <p class="card-text"><b>On: </b>{{review.updatedAt | date}}</p> -->
-          <hr>
-          <!-- <p>{{review.content}}</p> -->
+          <p class="card-text"><b>Role: </b>{{member.role | titlecase}}</p>
         </div>
       </div>
     </div>
   </div>
+</span>
+</span>
 </div>
