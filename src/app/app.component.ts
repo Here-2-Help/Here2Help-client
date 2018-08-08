@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isCollapsed: any;
   
   isCollapsed:Boolean = true;
 
   constructor(
     public userInfo: UserInfoService,
-    private router: Router
+    public router: Router
   ) {}
   
   ngOnInit() {

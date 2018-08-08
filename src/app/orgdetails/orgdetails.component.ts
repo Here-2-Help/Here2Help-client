@@ -11,8 +11,8 @@ export class OrgdetailsComponent implements OnInit {
 
 
   constructor(
-    private orgInfo: OrgInfoService, 
-    private route: ActivatedRoute
+    public orgInfo: OrgInfoService, 
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit() {
