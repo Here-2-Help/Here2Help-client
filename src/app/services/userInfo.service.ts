@@ -44,7 +44,8 @@ export class UserInfoService {
 
   login(user) {
     return this.http.post('http://localhost:3000/api/users/login', user, {withCredentials: true})
-    .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
+    .map(res => {this.currentUser = JSON.parse(res._body)})
+    // .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
   }
 
   getOneUser(userID) {
@@ -54,11 +55,21 @@ export class UserInfoService {
 
   isLoggedIn() {
     return this.http.get(`http://localhost:3000/api/users/loggedin`, {withCredentials: true})
-    .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
+    .map(res => {
+      // console.log(JSON.parse(res._body));
+      return this.currentUser = JSON.parse(res._body);
+      // this.currentUser = res.json().email ? res.json() : null; res.json()
+    }
+    )
   }
 
   editUser(userID,editedInfo){
     return this.http.post(`http://localhost:3000/api/users/edit/${userID}`, editedInfo, {withCredentials: true})
+    .map(res => res.json());
+  }
+
+  deleteAccount(userID){
+    return this.http.post(`http://localhost:3000/api/users/delete/${userID}`, {withCredentials: true})
     .map(res => res.json());
   }
     

@@ -19,7 +19,7 @@ export class UserdetailsComponent implements OnInit {
     
   userDetails:any = {};
     
-  isOwner:Boolean = true;
+  isOwner:Boolean = false; // <-- STILL NOT IMPLEMENTED
 
   googleCity:any = {};
 
@@ -30,6 +30,15 @@ export class UserdetailsComponent implements OnInit {
   editingProfile:Boolean = false;
 
   editedProfile:any = {};
+
+  currentUser:any = {};
+
+  deleteAccount() {
+    this.localUserInfo.deleteAccount(this.userDetails._id)
+      .subscribe((res)=>{
+        return this.localRouter.navigate(['/']);
+      })
+  };
 
   editProfile(){
     if (this.editingProfile) {
@@ -47,31 +56,19 @@ export class UserdetailsComponent implements OnInit {
       })
   };
 
-  // googleZipCodeTest(){
-  //   return this.localUserInfo.pullCityFromZip(this.userZipCode)
-  //     .subscribe((googleZip)=>{
-  //       console.log('-------------------this.userZipCode:',this.userZipCode);
-  //       console.log(googleZip.json());
-  //       return googleZip.json();
-  //     })
-  // }
-
-  // getOneUser(userID) {
-  //   return this.http.get(`http://localhost:3000/api/users/${userID}`)
-  //     .map((userDetails)=>{
-  //       return userDetails.json()
-  //     });
-  // }
-    
   ngOnInit() {
     this.userProfileRouter.params
     .subscribe((params)=>{
       this.localUserInfo.getOneUser(params['id'])
       .subscribe((returnedUserDetails)=>{
-        this.userDetails = returnedUserDetails;
-        this.editedProfile = returnedUserDetails;
-        this.userZipCode = returnedUserDetails.zipCode;
+        this.userDetails    = returnedUserDetails;
+        this.editedProfile  = returnedUserDetails;
+        this.userZipCode    = returnedUserDetails.zipCode;
+        this.currentUser    = returnedUserDetails;
         this.pullCityFromZip(this.userZipCode);
+        this.localUserInfo.isLoggedIn().toPromise().then(theLoggedInUser=>{
+          if(theLoggedInUser._id === this.userDetails._id) return this.isOwner = true;
+        })
       })
     })
   }

@@ -17,29 +17,29 @@
               <table class="table table-user-information">
                 <tbody>
                   <tr>
-                    <td>City:</td>
-                    <td>{{googleCity}}</td>
+                    <td><b>City:</b></td>
+                    <td class="float-right">{{googleCity}}</td>
                   </tr>
                   <tr>
-                    <td>Joined:</td>
-                    <td>{{editedProfile.createdAt | date }}</td>
+                    <td><b>Joined:</b></td>
+                    <td class="float-right">{{editedProfile.createdAt | date }}</td>
                   </tr>
                   <tr>
-                    <td>Email:</td>
-                    <td><a href="mailto:{{editedProfile.email}}">{{editedProfile.email}}</a></td>
+                    <td><b>Email:</b></td>
+                    <td class="float-right"><a href="mailto:{{editedProfile.email}}">{{editedProfile.email}}</a></td>
                   </tr>
                
                   <tr>
                     <tr>
-                      <td>Phone Number:</td>
-                      <td>{{editedProfile.phoneNumber}}</td>
+                      <td><b>Phone Number:</b></td>
+                      <td class="float-right">{{editedProfile.phoneNumber}}</td>
 
                     </tr>
                 </tbody>
               </table>
-              <div class="bottom-buttons">
+              <div class="bottom-buttons" *ngIf="isOwner">
                   <button (click)="editProfile()" class="float-left btn btn-warning btn-sm mr-1">Edit Profile</button>
-                  <button class="float-right btn btn-danger btn-sm">Delete Account</button>
+                  <button (click)="deleteAccount()" class="float-right btn btn-danger btn-sm">Delete Account</button>
               </div>
             </div>
           </div>
