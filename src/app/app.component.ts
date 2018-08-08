@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(
     public userInfo: UserInfoService,
-    private router: Router
+    public router: Router
   ) {}
   
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class OrgInfoService {
   ) { }
 
   getOneOrg(orgId) {
-    return this.http.get(`http://localhost:3000/api/orgs/${orgId}`)
+    return this.http.get(`${environment.api_base}/api/orgs/${orgId}`)
     .map(res => {this.currentOrg = res.json().name ? res.json() : null; return res.json()});
   }
 }
