@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class TestFormComponent implements OnInit {
   errorMessage: String;
+  email: String;
+  password: String;
 
   constructor(
     private userInfo: UserInfoService, 
