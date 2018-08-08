@@ -34,28 +34,28 @@ export class UserInfoService {
   }
 
   signup(newUser) {
-    return this.http.post(`${environment.api_base}api/users/signup`, newUser, {withCredentials: true})
+    return this.http.post(`${environment.api_base}/api/users/signup`, newUser, {withCredentials: true})
     .map(res => res.json());
   }
 
   logout() {
-    return this.http.post(`${environment.api_base}api/users/logout`, {}, {withCredentials: true})
+    return this.http.post(`${environment.api_base}/api/users/logout`, {}, {withCredentials: true})
     .subscribe(res => {this.router.navigate(['/'])});
   }
 
   login(user) {
-    return this.http.post(`${environment.api_base}api/users/login`, user, {withCredentials: true})
+    return this.http.post(`${environment.api_base}/api/users/login`, user, {withCredentials: true})
     // .map(res => {this.currentUser = JSON.parse(res._body)})
     .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
   }
 
   getOneUser(userID) {
-    return this.http.get(`${environment.api_base}api/users/${userID}`)
+    return this.http.get(`${environment.api_base}/api/users/${userID}`)
     .map((userDetails)=>{return userDetails.json()});
   }
 
   isLoggedIn() {
-    return this.http.get(`${environment.api_base}api/users/loggedin`, {withCredentials: true})
+    return this.http.get(`${environment.api_base}/api/users/loggedin`, {withCredentials: true})
     .map(res => {
       // console.log(JSON.parse(res._body));
       // return this.currentUser = JSON.parse(res._body);
@@ -65,18 +65,18 @@ export class UserInfoService {
   }
 
   editUser(userID,editedInfo){
-    return this.http.post(`${environment.api_base}api/users/edit/${userID}`, editedInfo, {withCredentials: true})
+    return this.http.post(`${environment.api_base}/api/users/edit/${userID}`, editedInfo, {withCredentials: true})
     .map(res => res.json());
   }
 
   deleteAccount(userID){
-    return this.http.post(`${environment.api_base}api/users/delete/${userID}`, {withCredentials: true})
+    return this.http.post(`${environment.api_base}/api/users/delete/${userID}`, {withCredentials: true})
     .map(res => res.json());
   }
     
 // COMMENTING THIS OUT INSTEAD OF DELETING IT IN CASE WE NEED TO USE THIS SIGNUP METHOD INSTEAD OF MINE
 //    signup(newUser){
-//        return this.http.post('${environment.api_base}api/users/signup', newUser)
+//        return this.http.post('${environment.api_base}/api/users/signup', newUser)
 //        .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()});
 //    }
     
