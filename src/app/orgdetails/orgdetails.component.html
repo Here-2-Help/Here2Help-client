@@ -1,10 +1,10 @@
 <div class="container org-details-container">
-  <!-- Top row -->
+  <!-- Info row -->
   <div class="row" *ngIf="orgInfo.currentOrg">
     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
         <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
     </div>
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 card-custom-container">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 info-card-container">
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>Organization Info</b></span>
@@ -24,29 +24,75 @@
     </div>
   </div>
 
-  <!-- Top row -->
+  <!-- Events row -->
+  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+    <h2 >Events</h2>
+  </div>
   <div class="row" *ngIf="orgInfo.currentOrg">
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
-      <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
-    </div>
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 card-custom-container">
+    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 event-card-container" *ngFor="let event of orgInfo.currentOrg.events" >
       <div class="card card-custom">
         <div class="card-header bg-success">
-          <span class="text-white"><b>Organization Info</b></span>
+          <span class="text-white"><b>{{event.name}}</b></span>
+        </div>
+        <div class="event-img-container">
+          <img src="{{event.mainPhoto}}" alt="">
         </div>
         <div class="card-body">
-          <p class="card-text"><b>Name: </b><a href="">{{orgInfo.currentOrg.name}}</a></p>
+          <p class="card-text"><b>Type: </b><a href="">{{event.type}}</a></p>
           <hr>
-          <p class="card-text"><b>Address: </b>{{orgInfo.currentOrg.address}}</p>
+          <p class="card-text"><b>Location: </b>{{event.location}}</p>
           <hr>
-          <p class="card-text"><b>Phone Number: </b>{{orgInfo.currentOrg.phoneNumber}}</p>
+          <p class="card-text"><b>Date: </b>{{event.startTime | date : 'MMMM dd, yyyy'}}</p>
           <hr>
-          <p class="card-text"><b>Email: </b>{{orgInfo.currentOrg.email}}</p>
+          <p class="card-text"><b>Time: </b>{{event.startTime | date : 'hh:mm aaaa'}} - {{event.endTime | date : 'hh:mm aaaa'}}</p>
           <hr>
-          <p class="card-text"><b>Description: </b>{{orgInfo.currentOrg.description}}</p>
+          <p class="card-text"><b>Status: </b>{{event.status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews row -->
+  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+    <h2 >Reviews</h2>
+  </div>
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container" *ngFor="let review of orgInfo.currentOrg.reviews" >
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>By: </b>{{review.author.firstName}}</span>
+        </div>
+        <div class="event-img-container">
+          <img src="{{review.reviewPhoto}}" alt="">
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>On: </b>{{review.updatedAt | date}}</p>
+          <hr>
+          <p>{{review.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews row -->
+  <div class="card-header row border-box" *ngIf="orgInfo.currentOrg">
+    <h2 >Members</h2>
+  </div>
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container" *ngFor="let member of orgInfo.currentOrg.staff" >
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>{{member.user.firstName}}</b></span>
+        </div>
+        <div class="event-img-container">
+          <img src="{{member.user.profilePicture}}" alt="">
+        </div>
+        <div class="card-body">
+          <!-- <p class="card-text"><b>On: </b>{{review.updatedAt | date}}</p> -->
+          <hr>
+          <!-- <p>{{review.content}}</p> -->
         </div>
       </div>
     </div>
   </div>
 </div>
-
