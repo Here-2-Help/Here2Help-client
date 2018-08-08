@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   isCollapsed: any;
   
+  isCollapsed:Boolean = true;
+
   constructor(
     public userInfo: UserInfoService,
     public router: Router
