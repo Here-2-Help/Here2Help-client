@@ -58,13 +58,7 @@ export class UserdetailsComponent implements OnInit {
         this.editedProfile  = returnedUserDetails;
         this.userZipCode    = returnedUserDetails.zipCode;
         this.pullCityFromZip(this.userZipCode);
-<<<<<<< HEAD
         if(this.localUserInfo.currentUser._id === this.userDetails._id) return this.isOwner = true;
-=======
-        this.localUserInfo.isLoggedIn().toPromise().then(theLoggedInUser=>{
-          // if(theLoggedInUser._id === this.userDetails._id) return this.isOwner = true;
-        })
->>>>>>> 48a1b7083470cef733c76b0402b3fbdb8ada7613
       })
     })
   }
