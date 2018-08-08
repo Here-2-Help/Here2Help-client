@@ -37,7 +37,7 @@
   header.masthead {
     position: relative;
     background-color: #343a40;
-    background: url("http://wondrlust.com/wp-content/uploads/2017/11/o-STUDENTS-VOLUNTEERING-facebook-960x540.jpg") no-repeat center center;
+    background: url("../../assets/images/landing_page_header.jpg") no-repeat center center;
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -124,7 +124,7 @@
   .call-to-action {
     position: relative;
     background-color: #343a40;
-    background: url("http://wondrlust.com/wp-content/uploads/2017/11/o-STUDENTS-VOLUNTEERING-facebook-960x540.jpg") no-repeat center center;
+    background: url("../../assets/images/landing_page_header.jpg") no-repeat center center;
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
