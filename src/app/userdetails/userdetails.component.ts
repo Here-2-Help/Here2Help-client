@@ -59,6 +59,7 @@ export class UserdetailsComponent implements OnInit {
         this.userZipCode    = returnedUserDetails.zipCode;
         this.pullCityFromZip(this.userZipCode);
         if(this.localUserInfo.currentUser._id === this.userDetails._id) return this.isOwner = true;
+
       })
     })
   }
