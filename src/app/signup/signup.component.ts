@@ -11,6 +11,12 @@ import { Router, Routes } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  firstName: String;
+  lastName: String;
+  zipCode: String;
+  phoneNumber: String;
+  email: String;
+  password: String;
 
   constructor(private localUserInfo: UserInfoService,
               private localRouter: Router) { };
