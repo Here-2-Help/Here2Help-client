@@ -25,13 +25,16 @@ import { OrgInfoService }           from './services/orgInfo.service'
 import { NgbModule }                from '@ng-bootstrap/ng-bootstrap';
 import { TestFormComponent }        from './test-form/test-form.component';
 import { UserdetailsComponent }     from './userdetails/userdetails.component';
-import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
-import { SearchComponent } from './search/search.component';
+import { OrgdetailsComponent }      from './orgdetails/orgdetails.component';
+import { SearchComponent }          from './search/search.component';
+import { SearchService }            from './services/search.service';
 
 // v-- ROUTES --v
 const routes: Routes = [
   {path: '',                component: LandingComponent     }, // <-- LANDING PAGE
 
+  {path: 'search',          component: SearchComponent      },
+  
   {path: 'signup',          component: SignupComponent      }, // <-- SIGNUP PAGE
   {path: 'users',           component: UserdetailsComponent }, // <-- LIST OF ALL USERS
   {path: 'profile/:id',     component: UserdetailsComponent }, // <-- MY PROFILE PAGE + OTHER USERS' PROFILES
@@ -67,7 +70,10 @@ const routes: Routes = [
     // MaterialModule,
     NgbModule.forRoot()
   ],
-  providers: [UserInfoService, OrgInfoService],
+  providers: [  UserInfoService,
+                OrgInfoService,
+                SearchService
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
