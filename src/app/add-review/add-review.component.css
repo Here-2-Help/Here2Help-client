@@ -134,3 +134,8 @@
     color: white;
     border-radius: 18px;
     } */
+
+mat-dialog-container{
+    border-radius: 20px;
+    padding: 0;
+}

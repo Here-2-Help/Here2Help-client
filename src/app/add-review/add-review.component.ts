@@ -23,9 +23,9 @@ export class AddReviewComponent implements OnInit {
     });
   }
 
-  submitReview(reviewContent){
-    
-  }
+  // submitReview(reviewContent){
+
+  // }
 
   ngOnInit() {
   }
