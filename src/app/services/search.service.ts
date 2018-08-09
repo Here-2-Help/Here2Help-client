@@ -28,7 +28,7 @@ export class SearchService {
 
   pullAllUsers(){
     return this.http.get(`${environment.api_base}/api/users/`)
-    .map(returnedUsers =>   {return JSON.parse(returnedUsers._body)});
+    .map(returnedUsers =>   {return returnedUsers.json()});
   }
 
   pullAllOrgs(){
