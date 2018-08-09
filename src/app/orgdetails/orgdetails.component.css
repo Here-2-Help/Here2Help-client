@@ -44,4 +44,12 @@
 
 .border-box {
   border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.border-box h2 {
+  margin: 0;
+  padding: 0;
 }
