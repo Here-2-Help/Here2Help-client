@@ -21,6 +21,9 @@ export class SearchService {
     public router: Router
   ) { }
 
+  // FILTER METHOD NEEDS TO BE MOVED HERE TO KEEP ALL SEARCH-RELATED METHODS
+  // AND CONTAINER VARS IN THE SAME PLACE AND ACCESSIBLE BY ALL COMPONENTS
+
   pullAllUsers(){
     return this.http.get(`${environment.api_base}/api/users/`)
     .map(returnedUsers =>   {return returnedUsers.json()});
