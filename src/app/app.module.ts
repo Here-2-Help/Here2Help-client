@@ -81,7 +81,8 @@ const routes: Routes = [
   ],
   providers: [  UserInfoService,
                 OrgInfoService,
-                SearchService
+                SearchService,
+                AddReviewComponent
               ],
   bootstrap: [AppComponent]
 })

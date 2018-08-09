@@ -4,6 +4,10 @@ import { UserInfoService }                from '../services/userInfo.service';
 import { Http, Response }                 from '@angular/http';
 import { SearchService }                  from '../services/search.service';
 
+import { MatDialog}                       from '@angular/material';
+
+import { AddReviewComponent }             from '../add-review/add-review.component';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -20,8 +24,18 @@ export class SearchComponent implements OnInit {
   resultsList:Array<any>;
 
   constructor(
-    public search: SearchService
+    public search: SearchService,
+    public dialog: MatDialog,
+    public AddReviewComponent: AddReviewComponent
   ) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddReviewComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   searchAll(searchInput) {
     const query = new RegExp(searchInput.value, 'i');

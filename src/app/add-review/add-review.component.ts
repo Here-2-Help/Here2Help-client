@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog} from '@angular/material';
+import { OrgInfoService } from '../services/orgInfo.service';
 
 
 @Component({
@@ -9,7 +10,10 @@ import { MatDialog} from '@angular/material';
 })
 export class AddReviewComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog:      MatDialog,
+    public orgService:  OrgInfoService
+  ) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(AddReviewComponent);
@@ -17,6 +21,10 @@ export class AddReviewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  submitReview(reviewContent){
+    
   }
 
   ngOnInit() {

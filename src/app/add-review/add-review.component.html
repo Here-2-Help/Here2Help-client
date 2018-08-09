@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container-fluid">
 
   <div class="row">
 
@@ -6,7 +6,7 @@
 
         <div class="card">
 
-            <div class="bg-success card-header text-white">
+            <div mat-dialog-title class="bg-success card-header text-white">
 
               Add a Review
 
@@ -14,22 +14,26 @@
 
             <div class="card-body">
 
-              <form>
+              <mat-dialog-content>
+              
+                <form>
 
-                <h5 class="card-title">Share your thoughts about [NAME OF ORG OR EVENT]</h5>
+                  <h5 class="card-title">Share your thoughts about [NAME OF ORG OR EVENT]</h5>
 
-                <div class="form-group">
-                
-                  <textarea class="form-control"></textarea>
+                  <div class="form-group">
+                  
+                    <textarea class="form-control"></textarea>
 
-                </div>
+                  </div>
 
-                <a href="#" class="btn btn-success float-right ml-3">Submit Review</a>
-                
-                <a href="#" class="btn btn-warning float-right">Cancel</a>
-                
+                  <a (click)="" class="btn btn-success float-right ml-3">Submit Review</a>
+                  
+                  <a href="#" class="btn btn-warning float-right">Cancel</a>
+                  
 
-              </form>
+                </form>
+
+              </mat-dialog-content>
 
             </div>
 
