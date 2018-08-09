@@ -1,4 +1,5 @@
-<div class="container org-details-container">
+<!-- VIEW MODE -->
+<div class="container org-details-container" *ngIf="!editMode">
   <!-- Info row -->
   <div class="row" *ngIf="orgInfo.currentOrg">
     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
@@ -10,7 +11,7 @@
           <span class="text-white"><b>Organization Info</b></span>
         </div>
         <div class="card-body">
-          <p class="card-text"><b>Name: </b><a href="">{{orgInfo.currentOrg.name}}</a></p>
+          <p class="card-text"><b>Name: </b>{{orgInfo.currentOrg.name}}</p>
           <hr>
           <p class="card-text"><b>Address: </b>{{orgInfo.currentOrg.address}}</p>
           <hr>
@@ -18,7 +19,10 @@
           <hr>
           <p class="card-text"><b>Email: </b>{{orgInfo.currentOrg.email}}</p>
           <hr>
-          <p class="card-text"><b>Description: </b>{{orgInfo.currentOrg.description}}</p>
+          <p class="card-text">
+            <b>Description: </b> <br> {{orgInfo.currentOrg.description}} <br>
+            <button class="btn btn-success float-right" (click)="toggleEditMode()" >Edit</button>
+          </p>
         </div>
       </div>
     </div>
@@ -127,6 +131,162 @@
       <div class="card card-custom">
         <div class="card-header bg-success">
           <span class="text-white"><b>{{member.user.firstName}}</b></span>
+        </div>
+        <div class="event-img-container">
+          <img class="rounded-circle img-responsive" src="{{member.user.profilePicture}}" alt="">
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>Role: </b>{{member.role | titlecase}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</span>
+</span>
+</div>
+
+<!-- EDIT MODE -->
+<div class="container org-details-container" *ngIf="editMode">
+  <!-- Info row -->
+  <div class="row" *ngIf="orgInfo.currentOrg">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
+        <img class="img-responsive img-custom" src="{{orgInfo.currentOrg.mainPhoto}}">      
+    </div>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 info-card-container card-container">
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>Organization Info</b></span>
+        </div>
+        <form #updateForm="ngForm" (ngSubmit)="updateOrg(updateForm)">
+          <div class="card-body">
+            <p class="card-text"><b>Name: </b> <input type="text" name="name" [(ngModel)]="orgInfo.currentOrg.name"> </p>
+            <hr>
+            <p class="card-text"><b>Address: </b> <input type="text" name="address" [(ngModel)]="orgInfo.currentOrg.address"></p>
+            <hr>
+            <p class="card-text"><b>Phone Number: </b><input type="text" name="phoneNumber" [(ngModel)]="orgInfo.currentOrg.phoneNumber"></p>
+            <hr>
+            <p class="card-text"><b>Email: </b><input type="text" name="email" [(ngModel)]="orgInfo.currentOrg.email"></p>
+            <hr>
+            <p class="card-text">
+              <b>Description: </b> <br>
+              <textarea name="description" [(ngModel)]="orgInfo.currentOrg.description" cols="55" rows="4">{{orgInfo.currentOrg.description}}</textarea>
+              <button class="btn btn-danger mb float-right" (click)="toggleEditMode()" >Cancel</button>
+              <button type="submit" class="btn btn-warning mb float-right" >Save</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photos row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.orgPhotos">
+  <div class="card-header row border-box">
+    <h2 >Pictures</h2>
+    <button class="btn btn-success"> <b> Add Picture </b></button>
+  </div>
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.orgPhotos.length === 0)">
+    <p>No pictures yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.orgPhotos.length === 0)">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngFor="let photo of orgInfo.currentOrg.orgPhotos" >
+      <div class="card card-custom">
+        <div class="event-img-container">
+          <img class="img-responsive" src="{{photo}}" alt="">
+          <button class="btn btn-danger top-right-btn" (click)="removePhoto(photo)">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </span>
+  </span>
+
+  <!-- Events row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.events">  
+  <div class="card-header row border-box">
+    <h2 >Events</h2>
+    <button class="btn btn-success"> <b> Add Event </b></button>
+  </div>
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.events.length === 0)">
+    <p>No Events yet</p>
+  </div>      
+  <div class="row" *ngIf="!(orgInfo.currentOrg.events.length === 0)">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 event-card-container card-container" *ngFor="let event of orgInfo.currentOrg.events" >
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>{{event.name}}</b></span>
+        </div>
+        <div class="event-img-container">
+          <img src="{{event.mainPhoto}}" alt="">
+          <span *ngIf="event.status !== 'cancelled'"><button class="btn btn-danger top-right-btn" (click)="removeEvent(event._id)">X</button></span>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>Type: </b><a href="">{{event.type}}</a></p>
+          <hr>
+          <p class="card-text"><b>Location: </b>{{event.location}}</p>
+          <hr>
+          <p class="card-text"><b>Date: </b>{{event.startTime | date : 'MMMM dd, yyyy'}}</p>
+          <hr>
+          <p class="card-text"><b>Time: </b>{{event.startTime | date : 'hh:mm aaaa'}} - {{event.endTime | date : 'hh:mm aaaa'}}</p>
+          <hr>
+          <p class="card-text"><b>Status: </b>{{event.status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </span>
+  </span>
+
+  <!-- Reviews row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.reviews">
+  <div class="card-header row border-box">
+    <h2>Reviews</h2>
+    <button class="btn btn-success"> <b> Add Review </b></button>
+  </div>
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.reviews.length === 0)">
+    <p>No Reviews yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.reviews.length === 0)">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container card-container" *ngFor="let review of orgInfo.currentOrg.reviews" >
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>By: </b>{{review.author.firstName}}</span>
+        </div>
+        <div class="event-img-container">
+          <img src="{{review.reviewPhoto}}" alt="">
+          <button class="btn btn-danger top-right-btn" (click)="removeReview(review._id)">X</button>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>On: </b>{{review.updatedAt | date}}</p>
+          <hr>
+          <p>{{review.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </span>
+  </span>
+
+  <!-- Members row -->
+  <span *ngIf="orgInfo.currentOrg">
+  <span *ngIf="orgInfo.currentOrg.staff">
+  <div class="card-header row border-box">
+    <h2>Members</h2>
+    <button class="btn btn-success"> <b> Add Member </b></button>
+  </div>
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.staff.length === 0)">
+    <p>No Members yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.staff.length === 0)">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 member-card-container card-container" *ngFor="let member of orgInfo.currentOrg.staff" >
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>{{member.user.firstName}}</b></span>
+          <button class="btn btn-danger top-right-btn" (click)="removeMember(member)">X</button>
+
         </div>
         <div class="event-img-container">
           <img class="rounded-circle img-responsive" src="{{member.user.profilePicture}}" alt="">
