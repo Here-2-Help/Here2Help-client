@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="searchInput.value">
 
     <section class="card col-12 col-sm-12 col-md-12 my-5" *ngFor="let eachResult of resultsList">
 
@@ -117,4 +117,10 @@
 
   </section>
   
+</div>
+
+<div class="container" *ngIf="!searchInput.value">
+
+  <h1>Search for something.</h1>
+
 </div>
