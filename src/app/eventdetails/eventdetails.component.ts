@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./eventdetails.component.css']
 })
 export class EventdetailsComponent implements OnInit {
+  editMode: boolean = false;
 
   constructor(
     public eventInfo: EventInfoService,
