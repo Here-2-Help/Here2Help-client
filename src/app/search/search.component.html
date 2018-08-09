@@ -1,9 +1,13 @@
+
 <div class="container">
 
-    <label for="search-bar">Search for a food: </label>
-    <input type="text" id="search-bar" (keyup)="searchAll(searchInput)" #searchInput>
-
-  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+    </div>
+    <input class="form-control" type="text" id="search-bar" (keyup)="searchAll(searchInput)" #searchInput placeholder="Find a user, organization, or event">
+    </div>
+</div>
 
 <div class="container">
 
@@ -11,11 +15,11 @@
 
       <!-- IF IT'S A USER -->
 
-      <article *ngIf="eachResult.firstName" class="search-result row">
+      <article *ngIf="eachResult.firstName" class="search-result row shadow">
         
           <!-- START PHOTO -->
 
-          <div class="col-12 col-sm-12 col-md-3">
+          <div class="col-12 col-sm-6 col-md-3 col-lg-2">
 
             <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.profilePicture}}" alt="Lorem ipsum" /></a>
 
@@ -23,7 +27,7 @@
 
           <!-- DETAILS / MIDDLE PANE -->
 
-          <div class="col-12 col-sm-12 col-md-2">
+          <div class="col-12 col-sm-6 col-md-2 col-lg-2">
             <ul class="meta-search">
               <li><i class="fa fa-user"></i>          <span>{{eachResult.firstName}} {{eachResult.lastName}}</span></li>
               <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
@@ -33,7 +37,7 @@
 
           <!-- TEXT -->
 
-          <div class="card-info col-12 col-sm-12 col-md-7 excerpet">
+          <div class="card-info col-12 col-sm-12 col-md-7 col-lg-8 excerpet">
             <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
                     <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>

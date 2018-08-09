@@ -21,11 +21,6 @@ export class SearchService {
     public router: Router
   ) { }
 
-  // pullAllUsers(){
-  //   return this.http.get(`${environment.api_base}/api/users/`)
-  //   .map(returnedUsers =>   {return returnedUsers.json()});
-  // }
-
   pullAllUsers(){
     return this.http.get(`${environment.api_base}/api/users/`)
     .map(returnedUsers =>   {return returnedUsers.json()});
