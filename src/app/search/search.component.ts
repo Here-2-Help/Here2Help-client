@@ -17,13 +17,38 @@ export class SearchComponent implements OnInit {
 
   searchResults:any   = [];
 
+  resultsList:Array<any>;
+
   constructor(
     public search: SearchService
   ) { }
 
-  searchAll(searchString){
-    
+  searchAll(searchInput) {
+    const query = new RegExp(searchInput.value, 'i');
+    this.resultsList = this.searchResults.filter((result) => {
+      if(result.firstName){
+        return result.firstName.match(query) || result.lastName.match(query);
+        console.log('USER FOUND');
+        console.log(this.resultsList);
+        // console.log(result);
+      } else if(result.address){
+        return result.name.match(query);
+        console.log('ORG FOUND');
+        console.log(this.resultsList);
+        // console.log(result);
+      } else {
+        return result.name.match(query);
+        console.log('EVENT FOUND');
+        console.log(this.resultsList);
+        // console.log(result);
+      }
+    });
   }
+
+  // searchFoods(searchInput) {
+  //   const mySearch = new RegExp(searchInput.value, 'i');
+  //   this.foodsList = foods.filter(it => it.name.match(mySearch));
+  // }
 
   ngOnInit() {
     this.search.pullAllUsers()
@@ -38,7 +63,9 @@ export class SearchComponent implements OnInit {
     this.search.pullAllEvents()
       .subscribe((returnedEvents)=>{
         this.searchResults.push(...returnedEvents);
+        this.resultsList = this.searchResults;
         console.log(this.searchResults);
+        console.log(this.resultsList);
       })
   }
 
