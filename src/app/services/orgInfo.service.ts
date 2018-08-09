@@ -11,8 +11,8 @@ export class OrgInfoService {
   currentOrg: any;
 
   constructor(
-    private http: Http,
-    private router: Router
+    public http: Http,
+    public router: Router
   ) { }
 
   getOneOrg(orgId) {

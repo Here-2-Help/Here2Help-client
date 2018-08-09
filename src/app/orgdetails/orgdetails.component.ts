@@ -49,7 +49,7 @@ export class OrgdetailsComponent implements OnInit {
   }
 
   removeReview(reviewId) {
-    this.orgInfo.deleteReview(reviewId).subscribe( res => {console.log(res)});
+    this.orgInfo.deleteReview(reviewId).subscribe(res => {console.log(res)});
   }
 
   removeMember(member) {

@@ -1,0 +1,57 @@
+<!-- VIEW MODE -->
+<div class="container org-details-container" *ngIf="!editMode">
+  <!-- Info row -->
+  <div class="row" *ngIf="eventInfo.currentEvent">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 img-custom-container">
+      <img class="img-responsive img-custom" src="{{eventInfo.currentEvent.mainPhoto}}">      
+    </div>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 info-card-container card-container">
+      <div class="card card-custom">
+        <div class="card-header bg-success">
+          <span class="text-white"><b>Event Info</b></span>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>Name: </b>{{eventInfo.currentEvent.name}}</p>
+          <hr>
+          <p class="card-text"><b>Address: </b>{{eventInfo.currentEvent.location}}</p>
+          <hr>
+          <p class="card-text"><b>Date: </b>{{eventInfo.currentEvent.startTime | date}}</p>
+          <hr>
+          <p class="card-text"><b>Time:             
+          </b>
+            {{eventInfo.currentEvent.startTime | date: 'hh:mm:ss aa'}} - 
+            {{eventInfo.currentEvent.endTime | date: 'hh:mm:ss aa'}}
+          </p>
+          <hr>
+          <p class="card-text">
+            <b>Status: </b> {{eventInfo.currentEvent.status}}
+            <button class="btn btn-success float-right" (click)="toggleEditMode()" >Edit</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photos row -->
+  <span *ngIf="eventInfo.currentEvent">
+    <span *ngIf="eventInfo.currentEvent.pictures">
+    <div class="card-header row border-box">
+      <h2 >Pictures</h2>
+      <button class="btn btn-success"> <b> Add Picture </b></button>
+    </div>
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(eventInfo.currentEvent.pictures.length === 0)">
+      <p>No pictures yet</p>
+    </div>
+    <div class="row" *ngIf="!(eventInfo.currentEvent.pictures.length === 0)">
+      <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngFor="let photo of eventInfo.currentEvent.pictures" >
+        <div class="card card-custom">
+          <div class="event-img-container">
+            <img class="img-responsive" src="{{photo}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    </span>
+  </span>
+
+</div>
