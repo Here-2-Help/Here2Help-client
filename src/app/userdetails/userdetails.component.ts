@@ -53,12 +53,12 @@ export class UserdetailsComponent implements OnInit {
     this.userProfileRouter.params
     .subscribe((params)=>{
       this.localUserInfo.getOneUser(params['id'])
-      .subscribe((returnedUserDetails)=>{
-        this.userDetails    = returnedUserDetails;
-        this.editedProfile  = returnedUserDetails;
-        this.userZipCode    = returnedUserDetails.zipCode;
-        this.pullCityFromZip(this.userZipCode);
-        if(this.localUserInfo.currentUser._id === this.userDetails._id) return this.isOwner = true;
+        .subscribe((returnedUserDetails)=>{
+          this.userDetails    = returnedUserDetails;
+          this.editedProfile  = returnedUserDetails;
+          this.userZipCode    = returnedUserDetails.zipCode;
+          this.pullCityFromZip(this.userZipCode);
+          if(this.localUserInfo.currentUser._id === this.userDetails._id) return this.isOwner = true;
       })
     })
   }
