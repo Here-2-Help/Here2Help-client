@@ -26,11 +26,15 @@
 
   <!-- Photos row -->
   <span *ngIf="orgInfo.currentOrg">
-  <span *ngIf="orgInfo.currentOrg.orgPhotos">    
-  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.orgPhotos.length === 0)">
+  <span *ngIf="orgInfo.currentOrg.orgPhotos">
+  <div class="card-header row border-box">
     <h2 >Pictures</h2>
+    <button class="btn btn-success"> <b> Add Picture </b></button>
   </div>
-  <div class="row" *ngIf="orgInfo.currentOrg">
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.orgPhotos.length === 0)">
+    <p>No pictures yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.orgPhotos.length === 0)">
     <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngFor="let photo of orgInfo.currentOrg.orgPhotos" >
       <div class="card card-custom">
         <div class="event-img-container">
@@ -45,10 +49,14 @@
   <!-- Events row -->
   <span *ngIf="orgInfo.currentOrg">
   <span *ngIf="orgInfo.currentOrg.events">  
-  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.events.length === 0)">
+  <div class="card-header row border-box">
     <h2 >Events</h2>
+    <button class="btn btn-success"> <b> Add Event </b></button>
   </div>
-  <div class="row" *ngIf="orgInfo.currentOrg">
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.events.length === 0)">
+    <p>No Events yet</p>
+  </div>      
+  <div class="row" *ngIf="!(orgInfo.currentOrg.events.length === 0)">
     <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 event-card-container card-container" *ngFor="let event of orgInfo.currentOrg.events" >
       <div class="card card-custom">
         <div class="card-header bg-success">
@@ -77,10 +85,14 @@
   <!-- Reviews row -->
   <span *ngIf="orgInfo.currentOrg">
   <span *ngIf="orgInfo.currentOrg.reviews">
-  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.reviews.length === 0)">
-    <h2 >Reviews</h2>
+  <div class="card-header row border-box">
+    <h2>Reviews</h2>
+    <button class="btn btn-success"> <b> Add Review </b></button>
   </div>
-  <div class="row" *ngIf="orgInfo.currentOrg">
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.reviews.length === 0)">
+    <p>No Reviews yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.reviews.length === 0)">
     <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 review-card-container card-container" *ngFor="let review of orgInfo.currentOrg.reviews" >
       <div class="card card-custom">
         <div class="card-header bg-success">
@@ -103,10 +115,14 @@
   <!-- Members row -->
   <span *ngIf="orgInfo.currentOrg">
   <span *ngIf="orgInfo.currentOrg.staff">
-  <div class="card-header row border-box" *ngIf="!(orgInfo.currentOrg.staff.length === 0)">
-    <h2 >Members</h2>
+  <div class="card-header row border-box">
+    <h2>Members</h2>
+    <button class="btn btn-success"> <b> Add Member </b></button>
   </div>
-  <div class="row" *ngIf="orgInfo.currentOrg">
+  <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.staff.length === 0)">
+    <p>No Members yet</p>
+  </div>
+  <div class="row" *ngIf="!(orgInfo.currentOrg.staff.length === 0)">
     <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 member-card-container card-container" *ngFor="let member of orgInfo.currentOrg.staff" >
       <div class="card card-custom">
         <div class="card-header bg-success">
