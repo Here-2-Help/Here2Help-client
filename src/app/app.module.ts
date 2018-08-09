@@ -28,6 +28,9 @@ import { UserdetailsComponent }     from './userdetails/userdetails.component';
 import { OrgdetailsComponent }      from './orgdetails/orgdetails.component';
 import { SearchComponent }          from './search/search.component';
 import { SearchService }            from './services/search.service';
+import { AddReviewComponent }       from './add-review/add-review.component';
+
+import { MatDialog, MatDialogModule }                from '../../node_modules/@angular/material';
 
 // v-- ROUTES --v
 const routes: Routes = [
@@ -39,14 +42,15 @@ const routes: Routes = [
   {path: 'users',           component: UserdetailsComponent }, // <-- LIST OF ALL USERS
   {path: 'profile/:id',     component: UserdetailsComponent }, // <-- MY PROFILE PAGE + OTHER USERS' PROFILES
 
-  {path: 'orgs',            component: OrgdetailsComponent }, // <-- LIST OF ALL ORGS
-  {path: 'org/:id',         component: OrgdetailsComponent }, // <-- ORG DETAILS PAGE
+  {path: 'orgs',            component: OrgdetailsComponent  }, // <-- LIST OF ALL ORGS
+  {path: 'org/:id',         component: OrgdetailsComponent  }, // <-- ORG DETAILS PAGE
 
   {path: 'events',          component: UserdetailsComponent }, // <-- LIST OF ALL EVENTS
   {path: 'event/:id',       component: UserdetailsComponent }, // <-- EVENT DETAILS PAGE
 
   {path: 'reviews',         component: UserdetailsComponent }, // <-- ?? ALL REVIEWS
   {path: 'review/:id',      component: UserdetailsComponent }, // <-- REVIEW DETAILS PAGE
+  {path: 'addreview',       component: AddReviewComponent   },
 
   {path: 'test',            component: TestFormComponent    }
 ]
@@ -59,9 +63,11 @@ const routes: Routes = [
     TestFormComponent,
     UserdetailsComponent,
     OrgdetailsComponent,
-    SearchComponent
+    SearchComponent,
+    AddReviewComponent
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -69,6 +75,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     // MaterialModule,
     NgbModule.forRoot()
+  ],
+  entryComponents: [
+    AddReviewComponent
   ],
   providers: [  UserInfoService,
                 OrgInfoService,
