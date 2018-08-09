@@ -28,6 +28,8 @@ import { UserdetailsComponent }     from './userdetails/userdetails.component';
 import { OrgdetailsComponent }      from './orgdetails/orgdetails.component';
 import { SearchComponent }          from './search/search.component';
 import { SearchService }            from './services/search.service';
+import { EventdetailsComponent }    from './eventdetails/eventdetails.component';
+import { EventInfoService }         from './services/event-info.service';
 
 // v-- ROUTES --v
 const routes: Routes = [
@@ -42,8 +44,8 @@ const routes: Routes = [
   {path: 'orgs',            component: OrgdetailsComponent }, // <-- LIST OF ALL ORGS
   {path: 'org/:id',         component: OrgdetailsComponent }, // <-- ORG DETAILS PAGE
 
-  {path: 'events',          component: UserdetailsComponent }, // <-- LIST OF ALL EVENTS
-  {path: 'event/:id',       component: UserdetailsComponent }, // <-- EVENT DETAILS PAGE
+  {path: 'events',          component: EventdetailsComponent }, // <-- LIST OF ALL EVENTS
+  {path: 'event/:id',       component: EventdetailsComponent }, // <-- EVENT DETAILS PAGE
 
   {path: 'reviews',         component: UserdetailsComponent }, // <-- ?? ALL REVIEWS
   {path: 'review/:id',      component: UserdetailsComponent }, // <-- REVIEW DETAILS PAGE
@@ -59,7 +61,8 @@ const routes: Routes = [
     TestFormComponent,
     UserdetailsComponent,
     OrgdetailsComponent,
-    SearchComponent
+    SearchComponent,
+    EventdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ const routes: Routes = [
   ],
   providers: [  UserInfoService,
                 OrgInfoService,
-                SearchService
+                SearchService, 
+                EventInfoService
               ],
   bootstrap: [AppComponent]
 })
