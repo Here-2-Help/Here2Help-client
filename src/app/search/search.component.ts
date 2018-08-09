@@ -28,19 +28,10 @@ export class SearchComponent implements OnInit {
     this.resultsList = this.searchResults.filter((result) => {
       if(result.firstName){
         return result.firstName.match(query) || result.lastName.match(query);
-        console.log('USER FOUND');
-        console.log(this.resultsList);
-        // console.log(result);
       } else if(result.address){
         return result.name.match(query);
-        console.log('ORG FOUND');
-        console.log(this.resultsList);
-        // console.log(result);
       } else {
         return result.name.match(query);
-        console.log('EVENT FOUND');
-        console.log(this.resultsList);
-        // console.log(result);
       }
     });
   }
