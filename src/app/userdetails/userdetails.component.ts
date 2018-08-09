@@ -11,11 +11,11 @@ import { Http, Response }                 from '@angular/http';
 
 export class UserdetailsComponent implements OnInit {
   
-  constructor(private localUserInfo:      UserInfoService,
-              private userProfileRouter:  ActivatedRoute,
-              private localDOMSanitizer:  Sanitizer,
-              private http:               Http,
-              private localRouter:        Router) { };
+  constructor(  private localUserInfo:      UserInfoService,
+                private userProfileRouter:  ActivatedRoute,
+                private localDOMSanitizer:  Sanitizer,
+                private http:               Http,
+                private localRouter:        Router) { };
     
   userDetails:any         = {};
   isOwner:Boolean         = false; // <-- STILL NOT IMPLEMENTED
