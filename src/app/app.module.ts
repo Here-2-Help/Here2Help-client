@@ -88,17 +88,15 @@ const routes: Routes = [
   entryComponents: [
     AddReviewComponent
   ],
-  providers: [  UserInfoService,
-                OrgInfoService,
-
-                SearchService,
-                AddReviewComponent,
-                SearchComponent
-
-                SearchService, 
-                EventInfoService
-
-              ],
+  providers: [  
+    UserInfoService,
+    OrgInfoService,
+    SearchService,
+    AddReviewComponent,
+    SearchComponent,
+    SearchService, 
+    EventInfoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
