@@ -50,11 +50,6 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  // searchFoods(searchInput) {
-  //   const mySearch = new RegExp(searchInput.value, 'i');
-  //   this.foodsList = foods.filter(it => it.name.match(mySearch));
-  // }
-
   ngOnInit() {
     this.search.pullAllUsers()
       .subscribe((returnedUsers)=>{
