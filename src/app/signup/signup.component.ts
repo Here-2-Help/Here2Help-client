@@ -18,13 +18,14 @@ export class SignupComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor(private localUserInfo: UserInfoService,
-              private localRouter: Router) { };
+  constructor(
+    private localUserInfo: UserInfoService,
+    private localRouter: Router
+  ) { };
 
   newlyCreatedUser:any = {};
 
   signup(formInfo) {
-    console.log(formInfo.value);
     this.localUserInfo.signup(formInfo.value)
       .subscribe((theNewUser)=>{
         this.localRouter.navigate(['']);
@@ -33,5 +34,4 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

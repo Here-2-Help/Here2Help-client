@@ -35,12 +35,12 @@ export class UserInfoService {
 
   signup(newUser) {
     return this.http.post(`${environment.api_base}/api/users/signup`, newUser, {withCredentials: true})
-    .map(res => res.json());
+    .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()});
   }
 
   logout() {
     return this.http.post(`${environment.api_base}/api/users/logout`, {}, {withCredentials: true})
-    .subscribe(res => {this.router.navigate(['/'])});
+    .map(res => {this.currentUser = res.json().email ? res.json() : null; res.json()})
   }
 
   login(user) {

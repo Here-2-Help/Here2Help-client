@@ -86,7 +86,6 @@ const routes: Routes = [
     SearchComponent
   ],
   providers: [  
-    
     UserInfoService,
     OrgInfoService,
     SearchService,
@@ -94,9 +93,7 @@ const routes: Routes = [
     SearchComponent,
     SearchService, 
     EventInfoService
-
               ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

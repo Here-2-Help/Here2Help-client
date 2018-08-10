@@ -35,7 +35,24 @@ export class AppComponent {
     this.userInfo.isLoggedIn().subscribe();
   }
   title = 'app';
+
+  login(loginForm) {
+    this.userInfo.login(loginForm.value)
+    .subscribe(
+      user =>   {this.router.navigate(['/'])},
+      error =>  {}
+    )
+  }
+
+  logout() {
+    this.userInfo.logout()
+    .subscribe(
+      res =>    {this.router.navigate(['/'])},
+      error =>  {}
+    );
+  }
 }
+
 
 // I'M HIDING ALL THIS HTML HERE IN CASE WE WANT TO GO BACK TO THE NORMAL BOOTSTRAP NAVBAR INSTEAD OF THE
 // NG-BOOTSTRAP ONE
