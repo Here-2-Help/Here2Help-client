@@ -82,7 +82,8 @@ const routes: Routes = [
     NgbModule.forRoot()
   ],
   entryComponents: [
-    AddReviewComponent
+    AddReviewComponent,
+    SearchComponent
   ],
   providers: [  
     
