@@ -46,13 +46,13 @@
                 </li>
             </ul>
             <form class="form-inline ml-auto my-2 my-lg-0">
-                <button [routerLink]="['/search']" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Search</button>
+                <button mat-button (click)="openDialog()" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Search</button>
             </form>
         </div>
     </nav> 
 </div>
 
-<button mat-button (click)="openDialog()">Open dialog</button>
+<!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
 
 <router-outlet></router-outlet>
 

@@ -24,17 +24,24 @@ export class SearchComponent implements OnInit {
   resultsList:Array<any>;
 
   constructor(
-    public search: SearchService,
-    public dialog: MatDialog,
-    public AddReviewComponent: AddReviewComponent
+    public search:              SearchService,
+    public dialog:              MatDialog,
+    public AddReviewComponent:  AddReviewComponent,
+    public localRouter:         Router,
+    public matDialog:           MatDialog
   ) { }
 
+  
   openDialog() {
     const dialogRef = this.dialog.open(AddReviewComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
     });
+  }
+
+  closeDialog() {
+    this.matDialog.closeAll();
   }
 
   searchAll(searchInput) {
@@ -50,7 +57,14 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  // ngOnInit() {
+  //   this._router.events.subscribe(() => {
+  //     this.sidenav.close();
+  //   });
+
   ngOnInit() {
+    // this.localRouter.events.subscribe(() => {
+    //   this.matDialog.closeAll();
     this.search.pullAllUsers()
       .subscribe((returnedUsers)=>{
         this.allUsers = returnedUsers;
