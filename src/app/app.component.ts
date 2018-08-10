@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component }        from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserInfoService } from './services/userInfo.service';
-import { Router } from '@angular/router';
+import { NgbModule }        from '@ng-bootstrap/ng-bootstrap';
+import { UserInfoService }  from './services/userInfo.service';
+import { Router }           from '@angular/router';
+import { SearchComponent }  from './search/search.component';
+
+import { MatDialog}         from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +18,18 @@ export class AppComponent {
 
   constructor(
     public userInfo: UserInfoService,
-    public router: Router
+    public router: Router,
+    public search: SearchComponent,
+    public dialog: MatDialog
   ) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SearchComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   
   ngOnInit() {
     this.userInfo.isLoggedIn().subscribe();

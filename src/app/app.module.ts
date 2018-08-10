@@ -1,40 +1,38 @@
 
-import { BrowserModule }            from '@angular/platform-browser';
-import { NgModule }                 from '@angular/core';
-import { RouterModule, Routes }     from '@angular/router';
-import { HttpModule }               from '@angular/http';
-import { FormsModule }              from '../../node_modules/@angular/forms';
-
-// v-- IMPORTS FOR ANGULAR MATERIAL UI PLUGINS --v
+import { BrowserModule }                from '@angular/platform-browser';
+import { NgModule }                     from '@angular/core';
+import { RouterModule, Routes }         from '@angular/router';
+import { HttpModule }                   from '@angular/http';
+import { FormsModule }                  from '../../node_modules/@angular/forms';
 
 // import { MaterialModule }           from './material.module'; // <-- TESTING TO SEE IF I CAN ELIMINATE THE
-                                                              //     HUGE LIST OF MATERIAL IMPORTS
-import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
-// ^-- ANIMATIONS MODULE HAS TO COME FIRST
+                                                                  //    HUGE LIST OF MATERIAL IMPORTS
+                                                                  
+import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
 
 // v-- COMPONENT IMPORTS --v
 
-import { AppComponent }             from './app.component';
-import { LandingComponent }         from './landing/landing.component'
-import { SignupComponent }          from './signup/signup.component';
+import { AppComponent }                 from './app.component';
+import { LandingComponent }             from './landing/landing.component'
+import { SignupComponent }              from './signup/signup.component';
 
 // v-- SERVICES IMPORTS --v
-import { UserInfoService }          from './services/userInfo.service';
-import { OrgInfoService }           from './services/orgInfo.service'
+import { UserInfoService }              from './services/userInfo.service';
+import { OrgInfoService }               from './services/orgInfo.service'
 
-import { NgbModule }                from '@ng-bootstrap/ng-bootstrap';
-import { TestFormComponent }        from './test-form/test-form.component';
-import { UserdetailsComponent }     from './userdetails/userdetails.component';
-import { OrgdetailsComponent }      from './orgdetails/orgdetails.component';
-import { SearchComponent }          from './search/search.component';
-import { SearchService }            from './services/search.service';
+import { NgbModule }                    from '@ng-bootstrap/ng-bootstrap';
+import { TestFormComponent }            from './test-form/test-form.component';
+import { UserdetailsComponent }         from './userdetails/userdetails.component';
+import { OrgdetailsComponent }          from './orgdetails/orgdetails.component';
+import { SearchComponent }              from './search/search.component';
+import { SearchService }                from './services/search.service';
 
-import { AddReviewComponent }       from './add-review/add-review.component';
+import { AddReviewComponent }           from './add-review/add-review.component';
 
-import { MatDialog, MatDialogModule }                from '../../node_modules/@angular/material';
+import { MatDialog, MatDialogModule }   from '../../node_modules/@angular/material';
 
-import { EventdetailsComponent }    from './eventdetails/eventdetails.component';
-import { EventInfoService }         from './services/event-info.service';
+import { EventdetailsComponent }        from './eventdetails/eventdetails.component';
+import { EventInfoService }             from './services/event-info.service';
 
 
 // v-- ROUTES --v
@@ -61,6 +59,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
+
   declarations: [
     AppComponent,
     SignupComponent,
@@ -69,11 +68,8 @@ const routes: Routes = [
     UserdetailsComponent,
     OrgdetailsComponent,
     SearchComponent,
-
     AddReviewComponent,
-
     EventdetailsComponent
-
   ],
   imports: [
     MatDialogModule,
@@ -86,7 +82,8 @@ const routes: Routes = [
     NgbModule.forRoot()
   ],
   entryComponents: [
-    AddReviewComponent
+    AddReviewComponent,
+    SearchComponent
   ],
   providers: [  
     UserInfoService,
@@ -96,7 +93,7 @@ const routes: Routes = [
     SearchComponent,
     SearchService, 
     EventInfoService
-  ],
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

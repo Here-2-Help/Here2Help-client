@@ -13,6 +13,8 @@
 
     <section class="card col-12 col-sm-12 col-md-12 my-5" *ngFor="let eachResult of resultsList">
 
+      <!-- ---------------------------------------------------------------------------------------------------------- -->
+
       <!-- IF IT'S A USER -->
 
       <article *ngIf="eachResult.firstName" class="search-result row shadow">
@@ -21,7 +23,7 @@
 
           <div class="col-12 col-sm-6 col-md-3 col-lg-2">
 
-            <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.profilePicture}}" alt="Lorem ipsum" /></a>
+            <a routerLink='/profile/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.profilePicture}}" alt="Lorem ipsum" /></a>
 
           </div>
 
@@ -29,9 +31,9 @@
 
           <div class="col-12 col-sm-6 col-md-2 col-lg-2">
             <ul class="meta-search">
-              <li><i class="fa fa-user"></i>          <span>{{eachResult.firstName}} {{eachResult.lastName}}</span></li>
+              <li><i class="fa fa-user"></i>          <span><a routerLink='/profile/{{eachResult._id}}'>{{eachResult.firstName}} {{eachResult.lastName}}</a></span></li>
               <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
-              <li><i class="fa fa-tags"></i>          <span>People</span></li>
+              <li><i class="fa fa-tags"></i>          <span>Volunteer</span></li>
             </ul>
           </div>
 
@@ -41,12 +43,14 @@
             
             <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                    <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                    <span class="plus"><a title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 
           </div>
           <span class="clearfix borda"></span>
       
       </article>
+
+      <!-- ---------------------------------------------------------------------------------------------------------- -->
 
       <!-- IF IT'S AN ORG -->
 
@@ -56,7 +60,7 @@
 
           <div class="col-12 col-sm-12 col-md-3">
 
-            <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
+            <a routerLink='/org/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
 
           </div>
 
@@ -64,23 +68,25 @@
 
           <div class="col-12 col-sm-12 col-md-2">
             <ul class="meta-search">
-              <li><i class="fa fa-user"></i>  <span>{{eachResult.address}}</span></li>
-              <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
-              <li><i class="fa fa-tags"></i>      <span>People</span></li>
+              <li><i class="fa fa-building"></i>  <span><a routerLink='/org/{{eachResult._id}}'>{{eachResult.name}}</a></span></li>
+              <li><i class="fa fa-calendar"></i>      <span>Joined H2H: <br>{{eachResult.createdAt | date }}</span></li>
+              <li><i class="fa fa-tags"></i>      <span>Organization</span></li>
             </ul>
           </div>
 
           <!-- TEXT -->
 
           <div class="col-12 col-sm-12 col-md-7 excerpet">
-            <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+            <h3>Description:</h3>
+            <p>{{eachResult.description}}</p>						
                     <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 
           </div>
           <span class="clearfix borda"></span>
       
       </article>
+
+      <!-- ---------------------------------------------------------------------------------------------------------- -->
 
       <!-- IF IT'S AN EVENT -->
 
@@ -90,7 +96,7 @@
 
           <div class="col-12 col-sm-12 col-md-3">
 
-            <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
+            <a routerLink='/event/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
 
           </div>
 
@@ -98,7 +104,7 @@
 
           <div class="col-12 col-sm-12 col-md-2">
             <ul class="meta-search">
-              <li><i class="fa fa-user"></i>  <span>{{eachResult.name}}}</span></li>
+              <li><i class="fa fa-user"></i>  <span><a routerLink='/event/{{eachResult._id}}'>{{eachResult.name}}</a></span></li>
               <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
               <li><i class="fa fa-tags"></i>      <span>People</span></li>
             </ul>
@@ -107,7 +113,7 @@
           <!-- TEXT -->
 
           <div class="col-12 col-sm-12 col-md-7 excerpet">
-            <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
+            <h3>Voluptatem, exercitationem, suscipit, distinctio</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
                     <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 
@@ -125,5 +131,3 @@
   <h1>Search for something.</h1>
 
 </div>
-
-<button mat-button (click)="openDialog()">Open dialog</button>
