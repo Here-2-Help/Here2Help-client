@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component }        from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserInfoService } from './services/userInfo.service';
-import { Router } from '@angular/router';
+import { NgbModule }        from '@ng-bootstrap/ng-bootstrap';
+import { UserInfoService }  from './services/userInfo.service';
+import { Router }           from '@angular/router';
 
 @Component({
   selector: 'app-root',
