@@ -1,6 +1,4 @@
-
 <div class="container">
-
   <div class="input-group mb-3">
     <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -10,124 +8,71 @@
 </div>
 
 <div class="container" *ngIf="searchInput.value">
+  <section class="card col-12 col-sm-12 col-md-12 my-5" *ngFor="let eachResult of resultsList">
+    <!-- IF IT'S A USER -->
+    <article *ngIf="eachResult.firstName" class="search-result row shadow">
+      <!-- START PHOTO -->
+      <div class="col-12 col-sm-6 col-md-3 col-lg-2 p-4">
+        <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.profilePicture}}" alt="Lorem ipsum" /></a>
+      </div>
+      <!-- DETAILS / MIDDLE PANE -->
+      <div class="col-12 col-sm-6 col-md-2 col-lg-2 pt-4 pb-4 mt-2">
+        <ul class="meta-search">
+          <li><i class="fa fa-user"></i><span> <a [routerLink]="['/profile/', eachResult._id]">{{eachResult.firstName}} {{eachResult.lastName}}</a></span></li>
+          <li><i class="fa fa-calendar"></i><span>Joined: {{eachResult.createdAt | date }}</span></li>
+          <li><i class="fa fa-tags"></i><span>People</span></li>
+        </ul>
+      </div>
+      <!-- TEXT -->
+      <div class="card-info col-12 col-sm-12 col-md-7 col-lg-8 excerpet p-4">
+        <h3><a href="#" title="">About Me:</a></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
 
-    <section class="card col-12 col-sm-12 col-md-12 my-5" *ngFor="let eachResult of resultsList">
+    <!-- IF IT'S AN ORG -->
+    <article *ngIf="eachResult.address" class="search-result row shadow">
+      <!-- START PHOTO -->
+      <div class="col-12 col-sm-12 col-md-3 pt-4 pb-4">
+        <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
+      </div>
+      <!-- DETAILS / MIDDLE PANE -->
+      <div class="col-12 col-sm-12 col-md-2 pt-5 pb-4">
+        <ul class="meta-search">
+          <li><i class="fa fa-user"></i><span> <a [routerLink]="['/org/', eachResult._id]">{{eachResult.name}}</a></span></li>
+          <li><i class="fa fa-calendar"></i><span>Joined: {{eachResult.createdAt | date }}</span></li>
+          <li><i class="fa fa-location-arrow"></i><span>{{eachResult.address}}</span></li>
+        </ul>
+      </div>
+      <!-- TEXT -->
+      <div class="col-12 col-sm-12 col-md-7 excerpet p-4">
+        <h3><a href="#" title="">About Us:</a></h3>
+        <p>{{eachResult.description}}</p>						
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
 
-      <!-- ---------------------------------------------------------------------------------------------------------- -->
-
-      <!-- IF IT'S A USER -->
-
-      <article *ngIf="eachResult.firstName" class="search-result row shadow">
-        
-          <!-- START PHOTO -->
-
-          <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-
-            <a routerLink='/profile/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.profilePicture}}" alt="Lorem ipsum" /></a>
-
-          </div>
-
-          <!-- DETAILS / MIDDLE PANE -->
-
-          <div class="col-12 col-sm-6 col-md-2 col-lg-2">
-            <ul class="meta-search">
-              <li><i class="fa fa-user"></i>          <span><a routerLink='/profile/{{eachResult._id}}'>{{eachResult.firstName}} {{eachResult.lastName}}</a></span></li>
-              <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
-              <li><i class="fa fa-tags"></i>          <span>Volunteer</span></li>
-            </ul>
-          </div>
-
-          <!-- TEXT -->
-
-          <div class="card-info col-12 col-sm-12 col-md-7 col-lg-8 excerpet">
-            
-            <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                    <span class="plus"><a title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-
-          </div>
-          <span class="clearfix borda"></span>
-      
-      </article>
-
-      <!-- ---------------------------------------------------------------------------------------------------------- -->
-
-      <!-- IF IT'S AN ORG -->
-
-      <article *ngIf="eachResult.address" class="search-result row mb-5">
-        
-          <!-- START PHOTO -->
-
-          <div class="col-12 col-sm-12 col-md-3">
-
-            <a routerLink='/org/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
-
-          </div>
-
-          <!-- DETAILS / MIDDLE PANE -->
-
-          <div class="col-12 col-sm-12 col-md-2">
-            <ul class="meta-search">
-              <li><i class="fa fa-building"></i>  <span><a routerLink='/org/{{eachResult._id}}'>{{eachResult.name}}</a></span></li>
-              <li><i class="fa fa-calendar"></i>      <span>Joined H2H: <br>{{eachResult.createdAt | date }}</span></li>
-              <li><i class="fa fa-tags"></i>      <span>Organization</span></li>
-            </ul>
-          </div>
-
-          <!-- TEXT -->
-
-          <div class="col-12 col-sm-12 col-md-7 excerpet">
-            <h3>Description:</h3>
-            <p>{{eachResult.description}}</p>						
-                    <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-
-          </div>
-          <span class="clearfix borda"></span>
-      
-      </article>
-
-      <!-- ---------------------------------------------------------------------------------------------------------- -->
-
-      <!-- IF IT'S AN EVENT -->
-
-      <article *ngIf="eachResult.startTime" class="search-result row mb-5">
-        
-          <!-- START PHOTO -->
-
-          <div class="col-12 col-sm-12 col-md-3">
-
-            <a routerLink='/event/{{eachResult._id}}' title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
-
-          </div>
-
-          <!-- DETAILS / MIDDLE PANE -->
-
-          <div class="col-12 col-sm-12 col-md-2">
-            <ul class="meta-search">
-              <li><i class="fa fa-user"></i>  <span><a routerLink='/event/{{eachResult._id}}'>{{eachResult.name}}</a></span></li>
-              <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
-              <li><i class="fa fa-tags"></i>      <span>People</span></li>
-            </ul>
-          </div>
-
-          <!-- TEXT -->
-
-          <div class="col-12 col-sm-12 col-md-7 excerpet">
-            <h3>Voluptatem, exercitationem, suscipit, distinctio</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                    <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-
-          </div>
-          <span class="clearfix borda"></span>
-      
-      </article>
-
+    <!-- IF IT'S AN EVENT -->
+    <article *ngIf="eachResult.startTime" class="search-result row mb-5">
+      <!-- START PHOTO -->
+      <div class="col-12 col-sm-12 col-md-3 pt-4 pb-4">
+        <a href="#" title="Lorem ipsum" class="thumbnail"><img class="img-fluid rounded" src="{{eachResult.mainPhoto}}" alt="Lorem ipsum" /></a>
+      </div>
+      <!-- DETAILS / MIDDLE PANE -->
+      <div class="col-12 col-sm-12 col-md-2 pt-4 pb-4">
+        <ul class="meta-search">
+          <li><i class="fa fa-user"></i>  <span>{{eachResult.name}}}</span></li>
+          <li><i class="fa fa-calendar"></i>      <span>Joined: {{eachResult.createdAt | date }}</span></li>
+          <li><i class="fa fa-tags"></i>      <span>People</span></li>
+        </ul>
+      </div>
+      <!-- TEXT -->
+      <div class="col-12 col-sm-12 col-md-7 excerpet p-4">
+        <h3><a href="#" title="">Details</a></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
   </section>
-  
-</div>
-
-<div class="container" *ngIf="!searchInput.value">
-
-  <h1>Search for something.</h1>
-
 </div>
