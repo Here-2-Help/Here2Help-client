@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     const dialogRef = this.dialog.open(AddReviewComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -69,8 +69,8 @@ export class SearchComponent implements OnInit {
       .subscribe((returnedEvents)=>{
         this.searchResults.push(...returnedEvents);
         this.resultsList = this.searchResults;
-        console.log(this.searchResults);
-        console.log(this.resultsList);
+        // console.log(this.searchResults);
+        // console.log(this.resultsList);
       })
   }
 
