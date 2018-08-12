@@ -9,7 +9,9 @@
 
 <div class="container" *ngIf="searchInput.value">
   <section class="card col-12 col-sm-12 col-md-12 my-5" *ngFor="let eachResult of resultsList">
+
     <!-- IF IT'S A USER -->
+    
     <article *ngIf="eachResult.firstName" class="search-result row shadow">
       <!-- START PHOTO -->
       <div class="col-12 col-sm-6 col-md-3 col-lg-2 p-4">
@@ -26,10 +28,16 @@
       <!-- TEXT -->
       <div class="card-info col-12 col-sm-12 col-md-7 col-lg-8 excerpet p-4">
         <h3><a href="#" title="">About Me:</a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+        <div *ngIf="eachResult.bio">
+          <p>{{eachResult.bio}}</p>
+        </div>
+        <div *ngIf="!eachResult.bio">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
+        </div>
       </div>
       <span class="clearfix borda"></span>
     </article>
+
 
     <!-- IF IT'S AN ORG -->
     <article *ngIf="eachResult.address" class="search-result row shadow">
@@ -52,6 +60,7 @@
       </div>
       <span class="clearfix borda"></span>
     </article>
+
 
     <!-- IF IT'S AN EVENT -->
     <article *ngIf="eachResult.startTime" class="search-result row mb-5">
