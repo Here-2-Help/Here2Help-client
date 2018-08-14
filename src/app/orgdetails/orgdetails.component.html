@@ -20,7 +20,12 @@
           <p class="card-text"><b>Email: </b>{{orgInfo.currentOrg.email}}</p>
           <hr>
           <p class="card-text">
-            <b>Description: </b> <br> {{orgInfo.currentOrg.description}} <br>
+            <b>Description: </b>
+          </p>
+          <p class="card-text">
+            {{orgInfo.currentOrg.description}}
+          </p>
+          <p>
             <button class="btn btn-success float-right" (click)="toggleEditMode()" >Edit</button>
           </p>
         </div>
@@ -157,21 +162,25 @@
         <div class="card-header bg-success">
           <span class="text-white"><b>Organization Info</b></span>
         </div>
-        <form #updateForm="ngForm" (ngSubmit)="updateOrg(updateForm)">
+        <form class="form-group" #updateForm="ngForm" (ngSubmit)="updateOrg(updateForm)">
           <div class="card-body">
-            <p class="card-text"><b>Name: </b> <input type="text" name="name" [(ngModel)]="orgInfo.currentOrg.name"> </p>
+            <p class="card-text"><b>Name: </b> <input class="form-control" type="text" name="name" [(ngModel)]="orgInfo.currentOrg.name"> </p>
             <hr>
-            <p class="card-text"><b>Address: </b> <input type="text" name="address" [(ngModel)]="orgInfo.currentOrg.address"></p>
+            <p class="card-text"><b>Address: </b> <input class="form-control" type="text" name="address" [(ngModel)]="orgInfo.currentOrg.address"></p>
             <hr>
-            <p class="card-text"><b>Phone Number: </b><input type="text" name="phoneNumber" [(ngModel)]="orgInfo.currentOrg.phoneNumber"></p>
+            <p class="card-text"><b>Phone Number: </b><input class="form-control" type="text" name="phoneNumber" [(ngModel)]="orgInfo.currentOrg.phoneNumber"></p>
             <hr>
-            <p class="card-text"><b>Email: </b><input type="text" name="email" [(ngModel)]="orgInfo.currentOrg.email"></p>
+            <p class="card-text"><b>Email: </b><input class="form-control" type="text" name="email" [(ngModel)]="orgInfo.currentOrg.email"></p>
             <hr>
             <p class="card-text">
-              <b>Description: </b> <br>
-              <textarea name="description" [(ngModel)]="orgInfo.currentOrg.description" cols="55" rows="4">{{orgInfo.currentOrg.description}}</textarea>
+              <b>Description: </b>
+            </p>
+            <p>
+              <textarea class="form-control" name="description" [(ngModel)]="orgInfo.currentOrg.description" >{{orgInfo.currentOrg.description}}</textarea>
+            </p>
+            <p>
               <button class="btn btn-danger mb float-right" (click)="toggleEditMode()" >Cancel</button>
-              <button type="submit" class="btn btn-warning mb float-right" >Save</button>
+              <button type="submit" class="btn btn-warning mb float-right" >Save</button>              
             </p>
           </div>
         </form>
