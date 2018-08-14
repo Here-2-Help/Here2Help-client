@@ -1,3 +1,14 @@
+<!-- ADD PHOTO MODAL -->
+<div class="container-fluid add-image-modal" [class.hidden]="!displayFormAddImage" (click)="toggleAddImageForm($event)">
+  <div class="container add-image-modal-content" (click)="ignore($event)">
+    <h3>Enter image link:</h3>
+    <input class="form-control centered" type="text" placeholder="Image URL">
+    <div class="button-container">
+      <button (click)="addPhoto($event)">Submit</button>
+    </div>
+  </div>
+</div>
+
 <!-- VIEW MODE -->
 <div class="container org-details-container" *ngIf="!editMode">
   <!-- Info row -->
@@ -38,7 +49,7 @@
   <span *ngIf="orgInfo.currentOrg.orgPhotos">
   <div class="card-header row border-box">
     <h2 >Pictures</h2>
-    <button class="btn btn-success"> <b> Add Picture </b></button>
+    <button class="btn btn-success" (click)="toggleAddImageForm($event)"> <b> Add Picture </b></button>
   </div>
   <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 photo-card-container card-container" *ngIf="(orgInfo.currentOrg.orgPhotos.length === 0)">
     <p>No pictures yet</p>

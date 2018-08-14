@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OrgdetailsComponent implements OnInit {
   editMode: boolean = false;
+  displayFormAddImage: boolean = false;
 
 
   constructor(
@@ -19,10 +20,6 @@ export class OrgdetailsComponent implements OnInit {
   ngOnInit() {
     this.getOrg();
   }
-
-  // update() {
-  //   this.orgInfo.getOneOrg(this.orgInfo.currentOrg._id).subscribe();
-  // }
 
   getOrg() {
     this.route.params.subscribe(params => {
@@ -40,6 +37,10 @@ export class OrgdetailsComponent implements OnInit {
     this.toggleEditMode();
   }
 
+  addPhoto(event) {
+    this.toggleAddImageForm(event);
+  }
+
   removePhoto(photo) {
     this.orgInfo.deletePhoto(photo).subscribe();
   }
@@ -49,10 +50,18 @@ export class OrgdetailsComponent implements OnInit {
   }
 
   removeReview(reviewId) {
-    this.orgInfo.deleteReview(reviewId).subscribe(res => {console.log(res)});
+    this.orgInfo.deleteReview(reviewId).subscribe();
   }
 
   removeMember(member) {
     this.orgInfo.deleteMember(member).subscribe();
+  }
+
+  ignore(event) {
+    event.stopPropagation();
+  }
+
+  toggleAddImageForm(event) {
+    this.displayFormAddImage = !this.displayFormAddImage;
   }
 }

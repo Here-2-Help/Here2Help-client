@@ -1,46 +1,44 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">      
-    <a class="navbar-brand text-success" [routerLink]="['/']"><b>Here2Help</b></a>
-    <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngbCollapse]="isCollapsed">
-      <ul class="navbar-nav">
-        <li ngbDropdown class="nav-item active" *ngIf="!this.userInfo.currentUser">
-          <a class="nav-link" id="navbarDropdownMenuLink" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
-            Login
-          </a>
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="login-form">
-            <form class="form-inline" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-              <label class="sr-only" for="email">Email:</label>
-              <input class="form-control mb-2 mr-sm-2" [(ngModel)]="email" type="text" name="email" required>
-              <label class="sr-only" for="password">Password:</label>
-              <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">@</div>
-                </div>
-                <input class="form-control" [(ngModel)]="password" type="password" name="password" required>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">      
+  <a class="navbar-brand text-success" [routerLink]="['/']"><b>Here2Help</b></a>
+  <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav">
+      <li ngbDropdown class="nav-item active" *ngIf="!this.userInfo.currentUser">
+        <a class="nav-link" id="navbarDropdownMenuLink" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+          Login
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="login-form">
+          <form class="form-inline" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <label class="sr-only" for="email">Email:</label>
+            <input class="form-control mb-2 mr-sm-2" [(ngModel)]="email" type="text" name="email" required>
+            <label class="sr-only" for="password">Password:</label>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
               </div>
-              <button class="btn btn-success mb-2"> <i class="fas fa-sign-in-alt"></i> Login</button>
-            </form>            
-          </div>
-        </li>
-        <li class="nav-item" *ngIf="!this.userInfo.currentUser">
-          <a class="nav-link" [routerLink]="['signup']">Signup</a>
-        </li>
-        <li class="nav-item active" *ngIf="this.userInfo.currentUser">
-          <a class="nav-link" [routerLink]="['/profile/', this.userInfo.currentUser._id]">Logged in as: {{this.userInfo.currentUser.firstName | titlecase}}</a>
-        </li>
-        <li class="nav-item" *ngIf="this.userInfo.currentUser">
-          <a class="nav-link" (click)="logout()" href="">Logout</a>
-        </li>
-      </ul>
-      <form class="form-inline ml-auto my-2 my-lg-0">
-        <button mat-button (click)="openDialog()" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Search</button>
-      </form>
-    </div>
-  </nav> 
-</div>
+              <input class="form-control" [(ngModel)]="password" type="password" name="password" required>
+            </div>
+            <button class="btn btn-success mb-2"> <i class="fas fa-sign-in-alt"></i> Login</button>
+          </form>            
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="!this.userInfo.currentUser">
+        <a class="nav-link" [routerLink]="['signup']">Signup</a>
+      </li>
+      <li class="nav-item active" *ngIf="this.userInfo.currentUser">
+        <a class="nav-link" [routerLink]="['/profile/', this.userInfo.currentUser._id]">Logged in as: {{this.userInfo.currentUser.firstName | titlecase}}</a>
+      </li>
+      <li class="nav-item" *ngIf="this.userInfo.currentUser">
+        <a class="nav-link" (click)="logout()" href="">Logout</a>
+      </li>
+    </ul>
+    <form class="form-inline ml-auto my-2 my-lg-0">
+      <button mat-button (click)="openDialog()" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> Search</button>
+    </form>
+  </div>
+</nav> 
 
 
 <router-outlet></router-outlet>
