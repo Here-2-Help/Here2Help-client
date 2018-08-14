@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class OrgdetailsComponent implements OnInit {
   editMode: boolean = false;
   displayFormAddImage: boolean = false;
+  newImageURL: string = '';
 
 
   constructor(
@@ -38,6 +39,8 @@ export class OrgdetailsComponent implements OnInit {
   }
 
   addPhoto(event) {
+    this.orgInfo.addPhoto(this.newImageURL).subscribe();
+    this.newImageURL = '';
     this.toggleAddImageForm(event);
   }
 

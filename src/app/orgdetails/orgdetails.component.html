@@ -2,9 +2,9 @@
 <div class="container-fluid add-image-modal" [class.hidden]="!displayFormAddImage" (click)="toggleAddImageForm($event)">
   <div class="container add-image-modal-content" (click)="ignore($event)">
     <h3>Enter image link:</h3>
-    <input class="form-control centered" type="text" placeholder="Image URL">
+    <input class="form-control centered" [(ngModel)]="newImageURL" type="text" placeholder="Image URL">
     <div class="button-container">
-      <button (click)="addPhoto($event)">Submit</button>
+      <button class="btn btn-success m-1" (click)="addPhoto($event)">Submit</button>
     </div>
   </div>
 </div>
