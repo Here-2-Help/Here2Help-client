@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrgInfoService } from '../services/orgInfo.service';
+import { EventInfoService } from '../services/event-info.service'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,6 +17,7 @@ export class OrgdetailsComponent implements OnInit {
 
   constructor(
     public orgInfo: OrgInfoService, 
+    public eventInfo: EventInfoService,
     public route: ActivatedRoute
   ) { }
 
@@ -40,8 +42,10 @@ export class OrgdetailsComponent implements OnInit {
   }
 
   addPhoto(event) {
-    this.orgInfo.addPhoto(this.newImageURL).subscribe();
-    this.newImageURL = '';
+    if(this.newImageURL !== '') {
+      this.orgInfo.addPhoto(this.newImageURL).subscribe();
+      this.newImageURL = '';
+    }
     this.toggleAddImageForm(event);
   }
 
@@ -50,7 +54,10 @@ export class OrgdetailsComponent implements OnInit {
   }
 
   addEvent(clickEvent, newEventForm) {
-    console.log(newEventForm);
+    newEventForm.value.startTime = '' + newEventForm.value.day + 'T' + newEventForm.value.startTime;
+    newEventForm.value.endTime   = '' + newEventForm.value.day + 'T' + newEventForm.value.endTime;
+    this.eventInfo.createEvent(newEventForm.value).subscribe();
+    this.getOrg();
     this.toggleAddEventForm(clickEvent);
   }
 
