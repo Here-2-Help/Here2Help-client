@@ -38,8 +38,9 @@
 }
 
 .event-img-container img {
-  max-width: 300px;
+  max-width: 280px;
   max-height: 180px;
+  padding: 5px;
 }
 
 .border-box {
@@ -80,7 +81,8 @@
   justify-content: space-between;
 }
 
-.add-image-modal {
+.add-image-modal, 
+.add-event-modal {
   position: fixed;
   z-index: 1;
   margin-top: 55px;
@@ -94,7 +96,8 @@
   margin: 0;
 }
 
-.add-image-modal-content {
+.add-image-modal-content,
+.add-event-modal-content {
   border-radius: 15px;
   background-color: white;
   padding: 25px;
