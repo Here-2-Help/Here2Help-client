@@ -49,6 +49,11 @@ export class OrgdetailsComponent implements OnInit {
     this.orgInfo.deletePhoto(photo).subscribe();
   }
 
+  addEvent(clickEvent, newEventForm) {
+    console.log(newEventForm);
+    this.toggleAddEventForm(clickEvent);
+  }
+
   removeEvent(eventId) {
     this.orgInfo.deleteEvent(eventId).subscribe();
   }

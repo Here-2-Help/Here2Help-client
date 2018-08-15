@@ -96,8 +96,7 @@
   margin: 0;
 }
 
-.add-image-modal-content,
-.add-event-modal-content {
+.add-image-modal-content {
   border-radius: 15px;
   background-color: white;
   padding: 25px;
@@ -107,6 +106,20 @@
   flex-direction: column;
 }
 
+.container.add-event-modal-content {
+  border-radius: 15px;
+  background-color: white;
+  padding: 25px;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container.add-event-modal-content form {
+  width: 100%;
+}
 .centered {
   text-align: center;
 }
