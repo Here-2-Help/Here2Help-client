@@ -15,50 +15,15 @@
     <h3>Enter Event Details</h3>
     <form class="form-group" #newEventForm="ngForm" (ngSubmit)="addEvent($clickEvent, newEventForm)">
       <div class="card-body">
-        <p class="card-text"> <b>Name:</b> &nbsp; <input class="form-control" type="text" ngModel name="newEventName"> </p>
-        <p class="card-text"> <b>Type:</b> &nbsp; <input class="form-control" type="text" ngModel name="newEventType"> </p>
-        <p class="card-text"> <b>Location:</b> &nbsp; <input class="form-control" type="text" ngModel name="newEventLocation"> </p>
-        <p class="card-text"> <b>Status:</b> &nbsp; <input class="form-control" type="text" name="newEventStatus"> </p>
-        <p class="card-text"> <b>Date:</b> &nbsp; 
-          <select class="form-control" name="sMonth">
-            <option disabled selected>Month</option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-          <input class="form-control" type="number" name="sDay" min="1" max="31" placeholder="Day">
-          <input class="form-control" type="number" name="sYear" min="2018" max="2020" placeholder="Year"> 
-        </p>
-        <p class="card-text"> <b>Start:</b> &nbsp;
-          <input class="form-control" type="number" name="sHour" min="1" max="12" placeholder="Hour">
-          <input class="form-control" type="number" name="sMin" min="0" max="59" placeholder="Minutes">
-          <select class="form-control" name="sAM/PM">
-            <option selected disabled>A/P</option>
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
-        </p>
-        <p class="card-text"> <b>End:</b> &nbsp;
-          <input class="form-control" type="number" name="eHour" min="1" max="12" placeholder="Hour">
-          <input class="form-control" type="number" name="eMin" min="0" max="59" placeholder="Minutes">
-          <select class="form-control" name="eAM/PM">
-            <option selected disabled>A/P</option>
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
-        </p>
-        <p>
-          <button class="btn btn-success mb float-right">Submit</button>
-        </p>
+        <p class="card-text"> <b>Name:    </b> &nbsp; <input class="form-control" type="text" ngModel name="name"></p>
+        <p class="card-text"> <b>Type:    </b> &nbsp; <input class="form-control" type="text" ngModel name="type"></p>
+        <p class="card-text"> <b>Location:</b> &nbsp; <input class="form-control" type="text" ngModel name="location"></p>
+        <p class="card-text"> <b>Status:  </b> &nbsp; <input class="form-control" type="text" ngModel name="status"></p>
+        <p class="card-text"> <b>Date:    </b> &nbsp; <input class="form-control" type="date" ngModel name="day" placeholder="Date"></p>
+        <p class="card-text"> <b>Start:   </b> &nbsp; <input class="form-control" type="time" ngModel name="startTime" placeholder="Start">
+                       &nbsp; <b>End:     </b> &nbsp; <input class="form-control" type="time" ngModel name="endTime" placeholder="End"></p>
+        <p class="card-text"> <b>Image:   </b> &nbsp; <input class="form-control" type="text" ngModel name="mainPhoto" placeholder="URL"></p>
+        <p><button class="btn btn-success mb float-right">Submit</button></p>
       </div>
     </form>
   </div>
