@@ -24,26 +24,31 @@ export class OrgInfoService {
 
   updateOrg(updatedOrg) {
     return this.http.post(`${environment.api_base}/api/orgs/${this.currentOrg._id}/edit`, updatedOrg)
-    .map(res => {return res.json()})
+    .map(res => {return res.json()});
+  }
+
+  addPhoto(photoURL) {
+    return this.http.post(`${environment.api_base}/api/orgs/${this.currentOrg._id}/addPhoto`, {photo: photoURL})
+    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()});
   }
 
   deletePhoto(photo) {
     return this.http.post(`${environment.api_base}/api/orgs/${this.currentOrg._id}/deletePhoto`, {photo: photo})
-    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()})
+    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()});
   }
 
   deleteEvent(eventId) {
     return this.http.post(`${environment.api_base}/api/events/${eventId}/delete`, {})
-    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()})
+    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()});
   }
 
   deleteReview(reviewId) {
     return this.http.post(`${environment.api_base}/api/reviews/delete/${reviewId}`, {})
-    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()})
+    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()});
   }
 
   deleteMember(member) {
     return this.http.post(`${environment.api_base}/api/orgs/${this.currentOrg._id}/deleteStaff`, member)
-    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()})
+    .map(res => {this.getOneOrg(this.currentOrg._id).subscribe(); return res.json()});
   }
 }

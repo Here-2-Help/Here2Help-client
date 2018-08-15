@@ -3,3 +3,9 @@
   padding: 10px;
   margin-top: 15px;
 }
+
+.navbar {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}

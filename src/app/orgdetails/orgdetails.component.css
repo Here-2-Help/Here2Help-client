@@ -38,8 +38,9 @@
 }
 
 .event-img-container img {
-  max-width: 300px;
+  max-width: 280px;
   max-height: 180px;
+  padding: 5px;
 }
 
 .border-box {
@@ -68,4 +69,67 @@
   right: 5px;
   top: 5px;
   background-color: rgba(220, 53, 69, 0.8);
+}
+
+.form-control {
+  text-align: right;
+}
+
+.card-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-image-modal, 
+.add-event-modal {
+  position: fixed;
+  z-index: 1;
+  margin-top: 55px;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.add-image-modal-content {
+  border-radius: 15px;
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container.add-event-modal-content {
+  border-radius: 15px;
+  background-color: white;
+  padding: 25px;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container.add-event-modal-content form {
+  width: 100%;
+}
+.centered {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
 }
