@@ -13,7 +13,7 @@
 <div class="container-fluid add-event-modal" [class.hidden]="!displayFormAddEvent" (click)="toggleAddEventForm($event)">
   <div class="container add-event-modal-content" (click)="ignore($event)">
     <h3>Enter Event Details</h3>
-    <form class="form-group" #newEventForm="ngForm" (ngSubmit)="addEvent($clickEvent, newEventForm)">
+    <form class="form-group" #newEventForm="ngForm" (ngSubmit)="addEvent($event, newEventForm)">
       <div class="card-body">
         <p class="card-text"> <b>Name:    </b> &nbsp; <input class="form-control" type="text" ngModel name="name"></p>
         <p class="card-text"> <b>Type:    </b> &nbsp; <input class="form-control" type="text" ngModel name="type"></p>
